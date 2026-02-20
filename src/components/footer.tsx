@@ -1,5 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Github, Briefcase } from 'lucide-react'
+import { m } from 'framer-motion'
+import { fadeIn, useMotionPreference } from '@/lib/motion'
 
 const navLinks = [
   { label: 'About', to: '/' as const, hash: 'about' },
@@ -9,8 +11,16 @@ const navLinks = [
 ]
 
 export function Footer() {
+  const { variants } = useMotionPreference()
+
   return (
-    <footer className="flex flex-col border-t border-border bg-background">
+    <m.footer
+      variants={variants(fadeIn)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      className="flex flex-col border-t border-border bg-background"
+    >
       <div className="flex flex-col gap-12 px-6 py-16 lg:flex-row lg:justify-between lg:gap-20 lg:px-20">
         <div className="flex flex-col gap-4 lg:w-80">
           <Link to="/" className="text-2xl font-extrabold tracking-tight text-accent">
@@ -100,6 +110,6 @@ export function Footer() {
           Designed &amp; built with &hearts; from the Philippines
         </span>
       </div>
-    </footer>
+    </m.footer>
   )
 }

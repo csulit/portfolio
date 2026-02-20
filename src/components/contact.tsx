@@ -1,12 +1,23 @@
 import { Briefcase } from 'lucide-react'
+import { m } from 'framer-motion'
+import { fadeLeft, fadeRight, useMotionPreference } from '@/lib/motion'
 
 export function Contact() {
+  const { variants, container } = useMotionPreference()
+
   return (
-    <section
+    <m.section
       id="contact"
+      variants={container(0.15)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
       className="flex flex-col gap-12 px-6 py-25 lg:flex-row lg:gap-20 lg:px-20"
     >
-      <div className="flex flex-1 flex-col gap-7">
+      <m.div
+        variants={variants(fadeLeft)}
+        className="flex flex-1 flex-col gap-7"
+      >
         <span className="w-fit rounded-md border border-border bg-surface px-3 py-1 text-xs font-semibold tracking-wider text-accent">
           // CONTACT
         </span>
@@ -31,9 +42,12 @@ export function Contact() {
           <Briefcase className="size-5" />
           Hire Me on Fiverr
         </a>
-      </div>
+      </m.div>
 
-      <form className="flex flex-1 flex-col gap-4">
+      <m.form
+        variants={variants(fadeRight)}
+        className="flex flex-1 flex-col gap-4"
+      >
         <div className="flex flex-col gap-2">
           <label
             htmlFor="name"
@@ -85,7 +99,7 @@ export function Contact() {
         >
           Send Message
         </button>
-      </form>
-    </section>
+      </m.form>
+    </m.section>
   )
 }

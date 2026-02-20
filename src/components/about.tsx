@@ -1,3 +1,6 @@
+import { m } from 'framer-motion'
+import { fadeUp, fadeLeft, fadeRight, useMotionPreference } from '@/lib/motion'
+
 const stats = [
   { value: '5+', label: 'Years Experience' },
   { value: '30+', label: 'Projects Shipped' },
@@ -5,12 +8,21 @@ const stats = [
 ]
 
 export function About() {
+  const { variants, container } = useMotionPreference()
+
   return (
-    <section
+    <m.section
       id="about"
+      variants={container(0.15)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
       className="flex flex-col items-center gap-12 px-6 py-25 lg:flex-row lg:items-start lg:gap-20 lg:px-20"
     >
-      <div className="flex shrink-0 flex-col gap-6 lg:w-120">
+      <m.div
+        variants={variants(fadeLeft)}
+        className="flex shrink-0 flex-col gap-6 lg:w-120"
+      >
         <span className="w-fit rounded-md border border-border bg-surface px-3 py-1 text-xs font-semibold tracking-wider text-accent">
           // ABOUT ME
         </span>
@@ -21,9 +33,12 @@ export function About() {
           <br />
           elegant software.
         </h2>
-      </div>
+      </m.div>
 
-      <div className="flex flex-col gap-5">
+      <m.div
+        variants={variants(fadeRight)}
+        className="flex flex-col gap-5"
+      >
         <p className="text-base leading-[1.7] text-text-primary">
           I&apos;m Gelo — a Senior Software Engineer and solo founder based in
           the Philippines. I specialize in building production-grade full-stack
@@ -36,19 +51,29 @@ export function About() {
           product — fast. I&apos;ve shipped SaaS platforms, built mobile apps,
           and integrated cutting-edge LLM pipelines into real-world products.
         </p>
-        <div className="flex gap-0 border-t border-border pt-6">
+        <m.div
+          variants={container(0.1)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex gap-0 border-t border-border pt-6"
+        >
           {stats.map((stat) => (
-            <div key={stat.label} className="flex flex-1 flex-col gap-1">
+            <m.div
+              key={stat.label}
+              variants={variants(fadeUp)}
+              className="flex flex-1 flex-col gap-1"
+            >
               <span className="text-4xl font-extrabold tracking-tight text-accent">
                 {stat.value}
               </span>
               <span className="text-[13px] text-text-secondary">
                 {stat.label}
               </span>
-            </div>
+            </m.div>
           ))}
-        </div>
-      </div>
-    </section>
+        </m.div>
+      </m.div>
+    </m.section>
   )
 }

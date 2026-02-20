@@ -1,5 +1,7 @@
 import { ExternalLink } from 'lucide-react'
+import { m } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { fadeUp, useMotionPreference } from '@/lib/motion'
 
 interface Tag {
   label: string
@@ -51,12 +53,21 @@ const projects: Array<Project> = [
 ]
 
 export function Projects() {
+  const { variants, container } = useMotionPreference()
+
   return (
-    <section
+    <m.section
       id="projects"
+      variants={container(0.12)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
       className="flex flex-col items-center gap-14 bg-surface px-6 py-25 lg:px-20"
     >
-      <div className="flex flex-col items-center gap-3">
+      <m.div
+        variants={variants(fadeUp)}
+        className="flex flex-col items-center gap-3"
+      >
         <span className="w-fit rounded-md border border-border bg-background px-3 py-1 text-xs font-semibold tracking-wider text-accent">
           // PROJECTS
         </span>
@@ -66,12 +77,19 @@ export function Projects() {
         <p className="text-base text-text-secondary">
           A selection of real-world projects built for real users.
         </p>
-      </div>
+      </m.div>
 
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
+      <m.div
+        variants={container(0.12)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3"
+      >
         {projects.map((project) => (
-          <div
+          <m.div
             key={project.title}
+            variants={variants(fadeUp)}
             className={cn(
               'flex flex-col overflow-hidden rounded-[20px] bg-background',
               project.highlighted
@@ -119,9 +137,9 @@ export function Projects() {
                 </button>
               </div>
             </div>
-          </div>
+          </m.div>
         ))}
-      </div>
-    </section>
+      </m.div>
+    </m.section>
   )
 }
