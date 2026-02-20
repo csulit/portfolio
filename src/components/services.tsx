@@ -1,6 +1,8 @@
 import { Monitor, Smartphone, Cpu, Rocket } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { m } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { fadeUp, useMotionPreference } from '@/lib/motion'
 
 interface Service {
   icon: LucideIcon
@@ -48,12 +50,21 @@ const services: Array<Service> = [
 ]
 
 export function Services() {
+  const { variants, container } = useMotionPreference()
+
   return (
-    <section
+    <m.section
       id="services"
+      variants={container(0.12)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
       className="flex flex-col items-center gap-14 px-6 py-25 lg:px-20"
     >
-      <div className="flex flex-col items-center gap-3">
+      <m.div
+        variants={variants(fadeUp)}
+        className="flex flex-col items-center gap-3"
+      >
         <span className="w-fit rounded-md border border-border bg-surface px-3 py-1 text-xs font-semibold tracking-wider text-accent">
           // SERVICES
         </span>
@@ -63,12 +74,19 @@ export function Services() {
         <p className="text-base text-text-secondary">
           End-to-end software development, from idea to deployed product.
         </p>
-      </div>
+      </m.div>
 
-      <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
+      <m.div
+        variants={container(0.1)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid w-full grid-cols-1 gap-5 md:grid-cols-2"
+      >
         {services.map((service) => (
-          <div
+          <m.div
             key={service.title}
+            variants={variants(fadeUp)}
             className={cn(
               'flex flex-col gap-5 rounded-[20px] bg-surface p-8 pt-9',
               service.highlighted
@@ -87,9 +105,9 @@ export function Services() {
             <p className="text-sm leading-relaxed text-text-secondary">
               {service.description}
             </p>
-          </div>
+          </m.div>
         ))}
-      </div>
-    </section>
+      </m.div>
+    </m.section>
   )
 }

@@ -8,6 +8,7 @@ import {
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
+import { LazyMotion, domAnimation } from 'framer-motion'
 import appCss from '../styles.css?url'
 
 export const Route = createRootRoute({
@@ -55,7 +56,7 @@ function RootComponent() {
 
 function NotFound() {
   return (
-    <div className="mx-auto flex min-h-screen max-w-[1440px] flex-col">
+    <div className="mx-auto flex min-h-screen max-w-360 flex-col">
       <div className="flex flex-1 flex-col items-center justify-center gap-6 px-6 text-center">
         <span className="rounded-md border border-border bg-surface px-3 py-1 text-xs font-semibold tracking-[1px] text-accent">
           // 404
@@ -84,7 +85,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className='antialiased'>
-        {children}
+        <LazyMotion features={domAnimation}>
+          {children}
+        </LazyMotion>
         <TanStackDevtools
           config={{
             position: 'bottom-right',
