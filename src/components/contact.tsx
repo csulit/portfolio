@@ -33,10 +33,7 @@ export function Contact() {
         </a>
       </div>
 
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        className="flex flex-1 flex-col gap-4"
-      >
+      <form className="flex flex-1 flex-col gap-4">
         <div className="flex flex-col gap-2">
           <label
             htmlFor="name"

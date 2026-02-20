@@ -110,13 +110,13 @@ export function Projects() {
               </p>
 
               <div className="mt-auto flex items-center gap-3">
-                <a
-                  href="#"
+                <button
+                  type="button"
                   className="flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-[13px] font-bold text-background transition-opacity hover:opacity-90"
                 >
                   <ExternalLink className="size-3.5" />
                   {project.linkLabel}
-                </a>
+                </button>
               </div>
             </div>
           </div>
