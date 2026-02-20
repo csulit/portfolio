@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import { MapPin } from 'lucide-react'
 
 export function Hero() {
@@ -10,7 +11,7 @@ export function Hero() {
         </span>
       </div>
 
-      <h1 className="text-center text-5xl font-extrabold tracking-tight text-white md:text-7xl lg:text-[80px]">
+      <h1 className="text-center text-5xl font-extrabold tracking-tight text-text-primary md:text-7xl lg:text-[80px]">
         Hi, I&apos;m Gelo.
       </h1>
 
@@ -24,12 +25,12 @@ export function Hero() {
       </p>
 
       <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row">
-        <a
-          href="#projects"
-          className="w-full rounded-[10px] bg-accent px-9 py-4 text-center text-base font-bold text-background shadow-[0_8px_32px_#32D58350] transition-opacity hover:opacity-90 sm:w-auto"
+        <Link
+          to="/projects"
+          className="w-full rounded-[10px] bg-accent px-9 py-4 text-center text-base font-bold text-background shadow-[0_8px_32px_#5CCC8E50] transition-opacity hover:opacity-90 sm:w-auto"
         >
           View My Work
-        </a>
+        </Link>
         <a
           href="https://www.fiverr.com"
           target="_blank"

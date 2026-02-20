@@ -3,24 +3,25 @@
 @theme {
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 
-  --color-background: #0B0B0E;
-  --color-surface: #16161A;
-  --color-surface-alt: #1A1A1E;
-  --color-border: #2A2A2E;
-  --color-accent: #32D583;
-  --color-accent-muted: #32D58320;
-  --color-accent-glow: #32D58340;
-  --color-accent-soft: #32D58315;
-  --color-text-primary: #FAFAF9;
-  --color-text-secondary: #6B6B70;
-  --color-text-muted: #4A4A50;
-  --color-text-placeholder: #3A3A40;
-  --color-indigo: #6366F1;
-  --color-indigo-soft: #6366F115;
-  --color-amber: #FFB547;
-  --color-amber-soft: #FFB54715;
-  --color-ts-blue: #3178C6;
-  --color-react-blue: #61DAFB;
+  --color-background: #121215;
+  --color-surface: #1C1C21;
+  --color-surface-alt: #232328;
+  --color-border: #2E2E33;
+  --color-accent: #5CCC8E;
+  --color-accent-muted: #5CCC8E20;
+  --color-accent-glow: #5CCC8E40;
+  --color-accent-soft: #5CCC8E15;
+  --color-accent-dark: #1F3D2D;
+  --color-text-primary: #EDEDEC;
+  --color-text-secondary: #8B8B92;
+  --color-text-muted: #5A5A61;
+  --color-text-placeholder: #44444B;
+  --color-indigo: #7B7EE8;
+  --color-indigo-soft: #7B7EE815;
+  --color-amber: #E8B86A;
+  --color-amber-soft: #E8B86A15;
+  --color-ts-blue: #4A88C9;
+  --color-react-blue: #72D4EE;
   --color-pg-blue: #336791;
 }
 

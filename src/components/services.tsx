@@ -72,7 +72,7 @@ export function Services() {
             className={cn(
               'flex flex-col gap-5 rounded-[20px] bg-surface p-8 pt-9',
               service.highlighted
-                ? 'border border-accent-glow shadow-[0_4px_24px_#32D58320]'
+                ? 'border border-accent-glow shadow-[0_4px_24px_#5CCC8E20]'
                 : 'border border-border',
             )}
           >

@@ -89,7 +89,7 @@ export function TechStack() {
                   className={cn(
                     'flex flex-col items-center gap-3 rounded-2xl bg-background p-7',
                     card.highlighted
-                      ? 'border border-accent-glow shadow-[0_0_20px_#32D58330]'
+                      ? 'border border-accent-glow shadow-[0_0_20px_#5CCC8E30]'
                       : 'border border-border',
                   )}
                 >
