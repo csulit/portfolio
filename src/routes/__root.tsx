@@ -1,4 +1,10 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import {
+  HeadContent,
+  Link,
+  Outlet,
+  Scripts,
+  createRootRoute,
+} from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
@@ -38,8 +44,38 @@ export const Route = createRootRoute({
       },
     ],
   }),
+  component: RootComponent,
+  notFoundComponent: NotFound,
   shellComponent: RootDocument,
 })
+
+function RootComponent() {
+  return <Outlet />
+}
+
+function NotFound() {
+  return (
+    <div className="mx-auto flex min-h-screen max-w-[1440px] flex-col">
+      <div className="flex flex-1 flex-col items-center justify-center gap-6 px-6 text-center">
+        <span className="rounded-md border border-border bg-surface px-3 py-1 text-xs font-semibold tracking-[1px] text-accent">
+          // 404
+        </span>
+        <h1 className="text-5xl font-extrabold tracking-tight text-text-primary md:text-7xl">
+          Page not found.
+        </h1>
+        <p className="max-w-md text-[17px] leading-relaxed text-text-secondary">
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
+        </p>
+        <Link
+          to="/"
+          className="mt-2 rounded-lg bg-accent px-6 py-3 text-sm font-bold text-background transition-opacity hover:opacity-90"
+        >
+          Back to Home
+        </Link>
+      </div>
+    </div>
+  )
+}
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
@@ -47,7 +83,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className='antialiased'>
         {children}
         <TanStackDevtools
           config={{

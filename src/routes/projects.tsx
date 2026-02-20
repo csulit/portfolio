@@ -187,12 +187,12 @@ function ProjectsPage() {
                 </p>
 
                 <div className="mt-auto flex items-center gap-3 pt-1">
-                  <a
-                    href="#"
+                  <button
+                    type="button"
                     className="rounded-lg bg-accent px-4.5 py-2 text-[13px] font-bold text-background transition-opacity hover:opacity-90"
                   >
                     {project.linkLabel}
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
