@@ -1,0 +1,51 @@
+import { MapPin } from 'lucide-react'
+
+export function Hero() {
+  return (
+    <section className="flex w-full flex-col items-center gap-8 bg-background px-6 py-25 lg:px-20 lg:pb-30">
+      <div className="flex items-center gap-2 rounded-full bg-accent-muted px-4 py-1.5">
+        <span className="size-2 rounded-full bg-accent" />
+        <span className="text-[13px] font-medium text-accent">
+          Available for freelance work
+        </span>
+      </div>
+
+      <h1 className="text-center text-5xl font-extrabold tracking-tight text-white md:text-7xl lg:text-[80px]">
+        Hi, I&apos;m Gelo.
+      </h1>
+
+      <p className="text-center text-xl font-bold tracking-tight text-accent md:text-[28px]">
+        Senior Software Engineer &amp; AI Solutions Builder
+      </p>
+
+      <p className="max-w-2xl text-center text-lg text-text-secondary">
+        I build full-stack web apps, mobile experiences, and AI-powered tools
+        {'\n'}that ship fast and scale further.
+      </p>
+
+      <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row">
+        <a
+          href="#projects"
+          className="w-full rounded-[10px] bg-accent px-9 py-4 text-center text-base font-bold text-background shadow-[0_8px_32px_#32D58350] transition-opacity hover:opacity-90 sm:w-auto"
+        >
+          View My Work
+        </a>
+        <a
+          href="https://www.fiverr.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full rounded-[10px] border border-border bg-surface-alt px-9 py-4 text-center text-base font-bold text-text-primary transition-colors hover:border-text-secondary sm:w-auto"
+        >
+          Hire Me on Fiverr
+        </a>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <MapPin className="size-4 text-text-secondary" />
+        <span className="text-sm text-text-secondary">
+          Based in the Philippines
+        </span>
+      </div>
+    </section>
+  )
+}
