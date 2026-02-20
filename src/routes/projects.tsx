@@ -107,7 +107,7 @@ function ProjectsPage() {
       : projects.filter((p) => p.category === activeFilter)
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-[1440px] flex-col">
+    <div className="mx-auto flex min-h-screen max-w-360 flex-col">
       <Nav />
       <main className="flex-1">
         {/* Hero */}
@@ -118,7 +118,7 @@ function ProjectsPage() {
           <h1 className="text-center text-4xl font-extrabold tracking-tight text-text-primary md:text-[56px] md:leading-[1.1]">
             Things I&apos;ve shipped.
           </h1>
-          <p className="max-w-[620px] text-center text-[17px] leading-relaxed text-text-secondary">
+          <p className="max-w-155 text-center text-[17px] leading-relaxed text-text-secondary">
             A curated collection of real-world projects — from SaaS products to
             AI tools and mobile apps.
           </p>
@@ -155,7 +155,7 @@ function ProjectsPage() {
                   : 'border border-border',
               )}
             >
-              <div className="flex h-[220px] items-center justify-center bg-surface-alt">
+              <div className="flex h-55 items-center justify-center bg-surface-alt">
                 <span className="text-[13px] font-medium text-text-placeholder">
                   [ Project Screenshot ]
                 </span>

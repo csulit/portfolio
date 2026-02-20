@@ -12,7 +12,7 @@ export const Route = createFileRoute('/')({ component: HomePage })
 
 function HomePage() {
   return (
-    <div className="mx-auto flex min-h-screen max-w-[1440px] flex-col">
+    <div className="mx-auto flex min-h-screen max-w-360 flex-col">
       <Nav />
       <main className="flex-1">
         <Hero />
