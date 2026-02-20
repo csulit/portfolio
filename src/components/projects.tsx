@@ -75,7 +75,7 @@ export function Projects() {
             className={cn(
               'flex flex-col overflow-hidden rounded-[20px] bg-background',
               project.highlighted
-                ? 'border border-accent-glow shadow-[0_4px_24px_#32D58320]'
+                ? 'border border-accent-glow shadow-[0_4px_24px_#5CCC8E20]'
                 : 'border border-border',
             )}
           >

@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import { Link } from '@tanstack/react-router'
 import { Briefcase, Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', to: '/' as const, hash: 'about' },
+  { label: 'Services', to: '/' as const, hash: 'services' },
+  { label: 'Projects', to: '/projects' as const, hash: undefined },
+  { label: 'Contact', to: '/' as const, hash: 'contact' },
 ]
 
 export function Nav() {
@@ -14,20 +15,21 @@ export function Nav() {
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md">
       <div className="flex h-18 items-center justify-between px-6 lg:px-20">
-        <a href="#" className="text-[22px] font-extrabold tracking-tight text-accent">
+        <Link to="/" className="text-[22px] font-extrabold tracking-tight text-accent">
           gelo.dev
-        </a>
+        </Link>
 
         <div className="flex items-center gap-10">
           <div className="hidden items-center gap-10 md:flex">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.to}
+                hash={link.hash}
                 className="text-[15px] font-medium text-text-secondary transition-colors hover:text-text-primary"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -55,14 +57,15 @@ export function Nav() {
       {mobileOpen && (
         <div className="flex flex-col gap-1 border-t border-border px-6 pb-5 pt-3 md:hidden">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.to}
+              hash={link.hash}
               onClick={() => setMobileOpen(false)}
               className="rounded-lg px-3 py-2.5 text-[15px] font-medium text-text-secondary transition-colors hover:bg-surface hover:text-text-primary"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <a
             href="https://www.fiverr.com"

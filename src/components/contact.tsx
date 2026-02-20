@@ -84,7 +84,7 @@ export function Contact() {
 
         <button
           type="submit"
-          className="flex w-full items-center justify-center rounded-[10px] bg-accent px-8 py-4 text-base font-bold text-background shadow-[0_8px_24px_#32D58340] transition-opacity hover:opacity-90"
+          className="flex w-full items-center justify-center rounded-[10px] bg-accent px-8 py-4 text-base font-bold text-background shadow-[0_8px_24px_#5CCC8E40] transition-opacity hover:opacity-90"
         >
           Send Message
         </button>

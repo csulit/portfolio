@@ -1,16 +1,11 @@
+import { Link } from '@tanstack/react-router'
 import { Github, Briefcase } from 'lucide-react'
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
-]
-
-const workLinks = [
-  { label: 'Fiverr Profile', href: 'https://www.fiverr.com' },
-  { label: 'GitHub', href: 'https://github.com' },
-  { label: 'Tech Stack', href: '#tech-stack' },
+  { label: 'About', to: '/' as const, hash: 'about' },
+  { label: 'Services', to: '/' as const, hash: 'services' },
+  { label: 'Projects', to: '/projects' as const, hash: undefined },
+  { label: 'Contact', to: '/' as const, hash: 'contact' },
 ]
 
 export function Footer() {
@@ -18,9 +13,9 @@ export function Footer() {
     <footer className="flex flex-col border-t border-border bg-background">
       <div className="flex flex-col gap-12 px-6 py-16 lg:flex-row lg:justify-between lg:gap-20 lg:px-20">
         <div className="flex flex-col gap-4 lg:w-80">
-          <span className="text-2xl font-extrabold tracking-tight text-accent">
+          <Link to="/" className="text-2xl font-extrabold tracking-tight text-accent">
             gelo.dev
-          </span>
+          </Link>
           <p className="max-w-75 text-sm leading-relaxed text-text-secondary">
             Building the web, one pixel at a time. Senior Software Engineer
             &amp; AI Solutions Builder based in the Philippines.
@@ -53,13 +48,14 @@ export function Footer() {
               Navigation
             </span>
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.to}
+                hash={link.hash}
                 className="text-sm text-text-secondary transition-colors hover:text-text-primary"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -67,21 +63,29 @@ export function Footer() {
             <span className="text-[13px] font-semibold text-text-primary">
               Work With Me
             </span>
-            {workLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith('http') ? '_blank' : undefined}
-                rel={
-                  link.href.startsWith('http')
-                    ? 'noopener noreferrer'
-                    : undefined
-                }
-                className="text-sm text-text-secondary transition-colors hover:text-text-primary"
-              >
-                {link.label}
-              </a>
-            ))}
+            <a
+              href="https://www.fiverr.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+            >
+              Fiverr Profile
+            </a>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+            >
+              GitHub
+            </a>
+            <Link
+              to="/"
+              hash="tech-stack"
+              className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+            >
+              Tech Stack
+            </Link>
           </div>
         </div>
       </div>
