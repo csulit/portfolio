@@ -2,7 +2,7 @@ import { Monitor, Smartphone, Cpu, Rocket } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { m } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { fadeUp, useMotionPreference } from '@/lib/motion'
+import { fadeUp, useAnimateOnce } from '@/lib/motion'
 
 interface Service {
   icon: LucideIcon
@@ -50,15 +50,13 @@ const services: Array<Service> = [
 ]
 
 export function Services() {
-  const { variants, container } = useMotionPreference()
+  const { inViewProps, variants, container } = useAnimateOnce('services', 0.2)
 
   return (
     <m.section
       id="services"
       variants={container(0.12)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      {...inViewProps}
       className="flex flex-col items-center gap-14 px-6 py-25 lg:px-20"
     >
       <m.div
@@ -78,9 +76,7 @@ export function Services() {
 
       <m.div
         variants={container(0.1)}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        {...inViewProps}
         className="grid w-full grid-cols-1 gap-5 md:grid-cols-2"
       >
         {services.map((service) => (

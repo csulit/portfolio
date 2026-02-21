@@ -1,17 +1,15 @@
 import { Briefcase } from 'lucide-react'
 import { m } from 'framer-motion'
-import { fadeLeft, fadeRight, useMotionPreference } from '@/lib/motion'
+import { fadeLeft, fadeRight, useAnimateOnce } from '@/lib/motion'
 
 export function Contact() {
-  const { variants, container } = useMotionPreference()
+  const { inViewProps, variants, container } = useAnimateOnce('contact', 0.2)
 
   return (
     <m.section
       id="contact"
       variants={container(0.15)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      {...inViewProps}
       className="flex flex-col gap-12 px-6 py-25 lg:flex-row lg:gap-20 lg:px-20"
     >
       <m.div

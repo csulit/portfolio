@@ -1,7 +1,7 @@
 import { ExternalLink } from 'lucide-react'
 import { m } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { fadeUp, useMotionPreference } from '@/lib/motion'
+import { fadeUp, useAnimateOnce } from '@/lib/motion'
 
 interface Tag {
   label: string
@@ -53,15 +53,13 @@ const projects: Array<Project> = [
 ]
 
 export function Projects() {
-  const { variants, container } = useMotionPreference()
+  const { inViewProps, variants, container } = useAnimateOnce('projects-home', 0.2)
 
   return (
     <m.section
       id="projects"
       variants={container(0.12)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      {...inViewProps}
       className="flex flex-col items-center gap-14 bg-surface px-6 py-25 lg:px-20"
     >
       <m.div
@@ -81,9 +79,7 @@ export function Projects() {
 
       <m.div
         variants={container(0.12)}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
+        {...inViewProps}
         className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3"
       >
         {projects.map((project) => (
