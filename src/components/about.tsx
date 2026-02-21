@@ -3,8 +3,8 @@ import { fadeUp, fadeLeft, fadeRight, useAnimateOnce } from '@/lib/motion'
 
 const stats = [
   { value: '5+', label: 'Years Experience' },
-  { value: '30+', label: 'Projects Shipped' },
-  { value: '10+', label: 'SaaS Products Built' },
+  { value: '20+', label: 'Projects Shipped' },
+  { value: '5+', label: 'SaaS Products Built' },
 ]
 
 export function About() {

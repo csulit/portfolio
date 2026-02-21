@@ -1,4 +1,3 @@
-import { ExternalLink } from 'lucide-react'
 import { m } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { fadeUp, useAnimateOnce } from '@/lib/motion'
@@ -13,42 +12,42 @@ interface Project {
   title: string
   description: string
   tags: Array<Tag>
-  linkLabel: string
   highlighted?: boolean
 }
 
 const projects: Array<Project> = [
   {
-    title: 'InvoiceForge',
+    title: 'AI Document Processing Pipeline',
     description:
-      'A SaaS invoicing platform for freelancers — with recurring billing, PDF generation, and client portal.',
+      'Built an AI-powered document processing system using GPT-4o agents with automated extraction, classification, and structured output. Handles high-throughput workloads with queue-based orchestration.',
+    tags: [
+      { label: 'AI / LLM', color: 'text-accent', bg: 'bg-accent-soft' },
+      { label: 'OpenAI', color: 'text-text-secondary', bg: 'bg-surface' },
+      { label: 'BullMQ', color: 'text-text-secondary', bg: 'bg-surface' },
+      { label: 'PostgreSQL', color: 'text-text-secondary', bg: 'bg-surface' },
+    ],
+    highlighted: true,
+  },
+  {
+    title: 'Full-Stack SaaS Platform',
+    description:
+      'Production SaaS application with auth, dashboards, and background job processing. Built end-to-end with a modern React framework, TypeScript, and a robust data layer.',
     tags: [
       { label: 'SaaS', color: 'text-accent', bg: 'bg-accent-soft' },
       { label: 'React', color: 'text-text-secondary', bg: 'bg-surface' },
-      { label: 'PostgreSQL', color: 'text-text-secondary', bg: 'bg-surface' },
+      { label: 'TypeScript', color: 'text-text-secondary', bg: 'bg-surface' },
+      { label: 'Prisma', color: 'text-text-secondary', bg: 'bg-surface' },
     ],
-    linkLabel: 'Live Demo',
   },
   {
-    title: 'HabitFlow',
+    title: 'React Native Mobile App',
     description:
-      'A cross-platform habit tracker app with streaks, analytics, and daily reminders — built with React Native and Expo.',
+      'Cross-platform mobile application with smooth animations, offline support, and a polished UX — built with React Native and TypeScript.',
     tags: [
       { label: 'Mobile', color: 'text-indigo', bg: 'bg-indigo-soft' },
       { label: 'React Native', color: 'text-text-secondary', bg: 'bg-surface' },
-    ],
-    linkLabel: 'App Store',
-  },
-  {
-    title: 'DocuMind AI',
-    description:
-      'AI-powered document Q&A tool. Upload PDFs, chat with your documents using RAG and GPT-4 under the hood.',
-    tags: [
-      { label: 'AI / LLM', color: 'text-accent', bg: 'bg-accent-soft' },
       { label: 'TypeScript', color: 'text-text-secondary', bg: 'bg-surface' },
     ],
-    linkLabel: 'Live Demo',
-    highlighted: true,
   },
 ]
 
@@ -122,16 +121,6 @@ export function Projects() {
               <p className="text-sm leading-relaxed text-text-secondary">
                 {project.description}
               </p>
-
-              <div className="mt-auto flex items-center gap-3">
-                <button
-                  type="button"
-                  className="flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-[13px] font-bold text-background transition-opacity hover:opacity-90"
-                >
-                  <ExternalLink className="size-3.5" />
-                  {project.linkLabel}
-                </button>
-              </div>
             </div>
           </m.div>
         ))}

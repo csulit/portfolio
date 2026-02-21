@@ -17,86 +17,50 @@ interface Project {
   title: string
   description: string
   tags: Array<Tag>
-  linkLabel: string
   category: string
   highlighted?: boolean
 }
 
-const categories = ['All', 'SaaS', 'Mobile', 'AI / ML', 'Open Source'] as const
+const categories = ['All', 'SaaS', 'Mobile', 'AI / ML'] as const
 
 const projects: Array<Project> = [
   {
-    title: 'InvoiceForge',
+    title: 'AI Document Processing Pipeline',
     description:
-      'A SaaS invoicing platform for freelancers — with recurring billing, PDF generation, and client portal.',
-    tags: [
-      { label: 'SaaS', category: true },
-      { label: 'React' },
-      { label: 'PostgreSQL' },
-    ],
-    linkLabel: 'Live Demo',
-    category: 'SaaS',
-  },
-  {
-    title: 'HabitFlow',
-    description:
-      'A cross-platform habit tracker with streaks, analytics, and daily reminders — built with React Native and Expo.',
-    tags: [
-      { label: 'Mobile', category: true },
-      { label: 'React Native' },
-      { label: 'Expo' },
-    ],
-    linkLabel: 'App Store',
-    category: 'Mobile',
-  },
-  {
-    title: 'DocuMind AI',
-    description:
-      'AI-powered document Q&A tool. Upload PDFs, chat with your documents using RAG and GPT-4 under the hood.',
+      'Built an AI-powered document processing system using GPT-4o/4o-mini agents with automated extraction, classification, and structured output. Handles high-throughput workloads with BullMQ queues and Prisma/PostgreSQL.',
     tags: [
       { label: 'AI / ML', category: true },
-      { label: 'Python' },
-      { label: 'GPT-4' },
+      { label: 'OpenAI' },
+      { label: 'BullMQ' },
+      { label: 'Prisma' },
+      { label: 'PostgreSQL' },
     ],
-    linkLabel: 'Live Demo',
     category: 'AI / ML',
     highlighted: true,
   },
   {
-    title: 'OpenAPI Kit',
+    title: 'Full-Stack SaaS Platform',
     description:
-      'An open-source CLI toolkit for scaffolding REST APIs with auto-generated docs, validation, and auth boilerplate.',
-    tags: [
-      { label: 'Open Source', category: true },
-      { label: 'TypeScript' },
-      { label: 'Node.js' },
-    ],
-    linkLabel: 'npm',
-    category: 'Open Source',
-  },
-  {
-    title: 'LinkVault',
-    description:
-      'A smart bookmark manager with tagging, full-text search, and team workspaces — monetized via Stripe subscriptions.',
+      'Production SaaS application built with TanStack Start (React), TypeScript, PostgreSQL, and Prisma. Includes authentication, dashboards, and background job processing via BullMQ/Redis.',
     tags: [
       { label: 'SaaS', category: true },
-      { label: 'Next.js' },
-      { label: 'Stripe' },
+      { label: 'React' },
+      { label: 'TypeScript' },
+      { label: 'Prisma' },
+      { label: 'BullMQ' },
     ],
-    linkLabel: 'Live Demo',
     category: 'SaaS',
   },
   {
-    title: 'CaptionAI',
+    title: 'React Native Mobile App',
     description:
-      'Auto-caption generator for videos and reels — powered by Whisper and a custom fine-tuned tone classifier.',
+      'Cross-platform mobile application with smooth animations, offline support, and a polished UX — built with React Native and TypeScript.',
     tags: [
-      { label: 'AI / ML', category: true },
-      { label: 'FastAPI' },
-      { label: 'React' },
+      { label: 'Mobile', category: true },
+      { label: 'React Native' },
+      { label: 'TypeScript' },
     ],
-    linkLabel: 'Live Demo',
-    category: 'AI / ML',
+    category: 'Mobile',
   },
 ]
 
@@ -212,15 +176,6 @@ function ProjectsPage() {
                   <p className="text-sm leading-relaxed text-text-secondary">
                     {project.description}
                   </p>
-
-                  <div className="mt-auto flex items-center gap-3 pt-1">
-                    <button
-                      type="button"
-                      className="rounded-lg bg-accent px-4.5 py-2 text-[13px] font-bold text-background transition-opacity hover:opacity-90"
-                    >
-                      {project.linkLabel}
-                    </button>
-                  </div>
                 </div>
               </m.div>
             ))}

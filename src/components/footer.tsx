@@ -30,7 +30,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-3">
             <a
-              href="https://github.com"
+              href="#" // TODO: Add real GitHub URL
               target="_blank"
               rel="noopener noreferrer"
               className="flex size-10 items-center justify-center rounded-[10px] border border-border bg-surface text-text-secondary transition-colors hover:text-text-primary"
@@ -39,7 +39,7 @@ export function Footer() {
               <Github className="size-4.5" />
             </a>
             <a
-              href="https://www.fiverr.com"
+              href="#" // TODO: Add real Fiverr URL
               target="_blank"
               rel="noopener noreferrer"
               className="flex size-10 items-center justify-center rounded-[10px] border border-border bg-surface text-text-secondary transition-colors hover:text-text-primary"
@@ -72,7 +72,7 @@ export function Footer() {
               Work With Me
             </span>
             <a
-              href="https://www.fiverr.com"
+              href="#" // TODO: Add real Fiverr URL
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-text-secondary transition-colors hover:text-text-primary"
@@ -80,7 +80,7 @@ export function Footer() {
               Fiverr Profile
             </a>
             <a
-              href="https://github.com"
+              href="#" // TODO: Add real GitHub URL
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-text-secondary transition-colors hover:text-text-primary"

@@ -32,7 +32,7 @@ export function Contact() {
         </p>
 
         <a
-          href="https://www.fiverr.com"
+          href="#" // TODO: Add real Fiverr URL
           target="_blank"
           rel="noopener noreferrer"
           className="flex w-fit items-center gap-3 rounded-xl bg-accent px-6 py-4 text-[15px] font-bold text-background transition-opacity hover:opacity-90"

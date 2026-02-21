@@ -41,7 +41,7 @@ export function Nav() {
           </div>
 
           <a
-            href="https://www.fiverr.com"
+            href="#" // TODO: Add real Fiverr URL
             target="_blank"
             rel="noopener noreferrer"
             className="hidden items-center gap-2 rounded-lg bg-accent px-6 py-2.5 text-sm font-bold text-background transition-opacity hover:opacity-90 sm:flex"
@@ -83,7 +83,7 @@ export function Nav() {
                 </Link>
               ))}
               <a
-                href="https://www.fiverr.com"
+                href="#" // TODO: Add real Fiverr URL
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-bold text-background transition-opacity hover:opacity-90 sm:hidden"
