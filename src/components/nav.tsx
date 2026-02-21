@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
-import { Briefcase, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { m, AnimatePresence } from 'framer-motion'
 import { navSlide, snappyTransition, useAnimateOnce } from '@/lib/motion'
 
@@ -40,16 +40,6 @@ export function Nav() {
             ))}
           </div>
 
-          <a
-            href="https://www.fiverr.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-lg bg-accent px-6 py-2.5 text-sm font-bold text-background transition-opacity hover:opacity-90 sm:flex"
-          >
-            <Briefcase className="size-4" />
-            Hire Me on Fiverr
-          </a>
-
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -82,15 +72,6 @@ export function Nav() {
                   {link.label}
                 </Link>
               ))}
-              <a
-                href="https://www.fiverr.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-bold text-background transition-opacity hover:opacity-90 sm:hidden"
-              >
-                <Briefcase className="size-4" />
-                Hire Me on Fiverr
-              </a>
             </div>
           </m.div>
         )}
