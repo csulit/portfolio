@@ -52,7 +52,7 @@ export function About() {
         <m.div
           variants={container(0.1)}
           {...inViewProps}
-          className="grid grid-cols-1 gap-6 border-t border-border pt-6 sm:grid-cols-3 sm:gap-0"
+          className="grid grid-cols-3 border-t border-border pt-6 text-center"
         >
           {stats.map((stat) => (
             <m.div
@@ -60,10 +60,10 @@ export function About() {
               variants={variants(fadeUp)}
               className="flex flex-col gap-1"
             >
-              <span className="text-4xl font-extrabold tracking-tight text-accent">
+              <span className="text-3xl font-extrabold tracking-tight text-accent sm:text-4xl">
                 {stat.value}
               </span>
-              <span className="text-[13px] text-text-secondary">
+              <span className="text-[11px] text-text-secondary sm:text-[13px]">
                 {stat.label}
               </span>
             </m.div>
