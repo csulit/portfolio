@@ -3,4 +3,5 @@ declare module 'cloudflare:workers' {
     DB: D1Database
     TURNSTILE_SECRET_KEY: string
   }
+  const env: Env
 }
