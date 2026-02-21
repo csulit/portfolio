@@ -22,7 +22,7 @@ export function Footer() {
       <div className="flex flex-col gap-12 px-6 py-16 lg:flex-row lg:justify-between lg:gap-20 lg:px-20">
         <div className="flex flex-col gap-4 lg:w-80">
           <Link to="/" className="text-2xl font-extrabold tracking-tight text-accent">
-            gelo.dev
+            cgelo.dev
           </Link>
           <p className="max-w-75 text-sm leading-relaxed text-text-secondary">
             Building the web, one pixel at a time. Senior Software Engineer

@@ -23,7 +23,7 @@ export function Nav() {
     >
       <div className="flex h-18 items-center justify-between px-6 lg:px-20">
         <Link to="/" className="text-[22px] font-extrabold tracking-tight text-accent">
-          gelo.dev
+          cgelo.dev
         </Link>
 
         <div className="flex items-center gap-10">
