@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { m, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { fadeUp, useMotionPreference } from '@/lib/motion'
+import { fadeUp, useAnimateOnce } from '@/lib/motion'
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 
@@ -102,7 +102,7 @@ const projects: Array<Project> = [
 
 function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState<string>('All')
-  const { variants, container, prefersReduced } = useMotionPreference()
+  const { mountProps, variants, container, prefersReduced } = useAnimateOnce('projects-page')
 
   const filtered =
     activeFilter === 'All'
@@ -116,8 +116,7 @@ function ProjectsPage() {
         {/* Hero */}
         <m.section
           variants={container(0.1, 0.1)}
-          initial="hidden"
-          animate="visible"
+          {...mountProps}
           className="flex flex-col items-center gap-5 px-6 pt-20 pb-15 lg:px-20"
         >
           <m.span
@@ -144,8 +143,7 @@ function ProjectsPage() {
         {/* Filter bar */}
         <m.div
           variants={container(0.06, 0.3)}
-          initial="hidden"
-          animate="visible"
+          {...mountProps}
           className="flex flex-wrap items-center gap-3 px-6 pb-12 lg:px-20"
         >
           {categories.map((cat) => (

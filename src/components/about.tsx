@@ -1,5 +1,5 @@
 import { m } from 'framer-motion'
-import { fadeUp, fadeLeft, fadeRight, useMotionPreference } from '@/lib/motion'
+import { fadeUp, fadeLeft, fadeRight, useAnimateOnce } from '@/lib/motion'
 
 const stats = [
   { value: '5+', label: 'Years Experience' },
@@ -8,15 +8,13 @@ const stats = [
 ]
 
 export function About() {
-  const { variants, container } = useMotionPreference()
+  const { inViewProps, variants, container } = useAnimateOnce('about', 0.2)
 
   return (
     <m.section
       id="about"
       variants={container(0.15)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      {...inViewProps}
       className="flex flex-col items-center gap-12 px-6 py-25 lg:flex-row lg:items-start lg:gap-20 lg:px-20"
     >
       <m.div
@@ -53,9 +51,7 @@ export function About() {
         </p>
         <m.div
           variants={container(0.1)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          {...inViewProps}
           className="flex gap-0 border-t border-border pt-6"
         >
           {stats.map((stat) => (

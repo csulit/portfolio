@@ -14,7 +14,7 @@ import {
 import type { LucideIcon } from 'lucide-react'
 import { m } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { fadeUp, useMotionPreference } from '@/lib/motion'
+import { fadeUp, useAnimateOnce } from '@/lib/motion'
 
 interface TechCard {
   icon: LucideIcon
@@ -60,14 +60,12 @@ const techRows: Array<TechRow> = [
 ]
 
 export function TechStack() {
-  const { variants, container } = useMotionPreference()
+  const { inViewProps, variants, container } = useAnimateOnce('tech-stack', 0.1)
 
   return (
     <m.section
       variants={container(0.12)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
+      {...inViewProps}
       className="flex w-full flex-col items-center gap-12 bg-surface px-6 py-20 lg:px-20"
     >
       <m.div
@@ -101,9 +99,7 @@ export function TechStack() {
             </div>
             <m.div
               variants={container(0.08)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+              {...inViewProps}
               className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
             >
               {row.cards.map((card) => (

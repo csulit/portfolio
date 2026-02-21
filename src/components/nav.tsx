@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Briefcase, Menu, X } from 'lucide-react'
 import { m, AnimatePresence } from 'framer-motion'
-import { snappyTransition, useMotionPreference } from '@/lib/motion'
+import { navSlide, snappyTransition, useAnimateOnce } from '@/lib/motion'
 
 const navLinks = [
   { label: 'About', to: '/' as const, hash: 'about' },
@@ -13,13 +13,12 @@ const navLinks = [
 
 export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { prefersReduced } = useMotionPreference()
+  const { mountProps, variants, prefersReduced } = useAnimateOnce('nav')
 
   return (
     <m.nav
-      initial={prefersReduced ? false : { opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={snappyTransition}
+      variants={variants(navSlide)}
+      {...mountProps}
       className="sticky top-0 z-50 bg-background/80 backdrop-blur-md"
     >
       <div className="flex h-18 items-center justify-between px-6 lg:px-20">

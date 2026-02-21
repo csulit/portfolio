@@ -1,16 +1,15 @@
 import { Link } from '@tanstack/react-router'
 import { MapPin } from 'lucide-react'
 import { m } from 'framer-motion'
-import { fadeUp, fadeIn, scaleIn, useMotionPreference } from '@/lib/motion'
+import { fadeUp, fadeIn, scaleIn, useAnimateOnce } from '@/lib/motion'
 
 export function Hero() {
-  const { variants, container } = useMotionPreference()
+  const { mountProps, variants, container } = useAnimateOnce('hero')
 
   return (
     <m.section
       variants={container(0.1, 0.15)}
-      initial="hidden"
-      animate="visible"
+      {...mountProps}
       className="flex w-full flex-col items-center gap-8 bg-background px-6 py-25 lg:px-20 lg:pb-30"
     >
       <m.div
