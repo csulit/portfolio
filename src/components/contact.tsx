@@ -79,7 +79,7 @@ export function Contact() {
         </p>
 
         <a
-          href="#" // TODO: Add real Fiverr URL
+          href="https://www.fiverr.com/ccsulit?public_mode=true"
           target="_blank"
           rel="noopener noreferrer"
           className="flex w-fit items-center gap-3 rounded-xl bg-accent px-6 py-4 text-[15px] font-bold text-background transition-opacity hover:opacity-90"

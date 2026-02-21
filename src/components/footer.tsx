@@ -39,7 +39,7 @@ export function Footer() {
               <Github className="size-4.5" />
             </a>
             <a
-              href="#" // TODO: Add real Fiverr URL
+              href="https://www.fiverr.com/ccsulit?public_mode=true"
               target="_blank"
               rel="noopener noreferrer"
               className="flex size-10 items-center justify-center rounded-[10px] border border-border bg-surface text-text-secondary transition-colors hover:text-text-primary"
@@ -72,7 +72,7 @@ export function Footer() {
               Work With Me
             </span>
             <a
-              href="#" // TODO: Add real Fiverr URL
+              href="https://www.fiverr.com/ccsulit?public_mode=true"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-text-secondary transition-colors hover:text-text-primary"
