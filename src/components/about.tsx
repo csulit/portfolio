@@ -2,7 +2,7 @@ import { m } from 'framer-motion'
 import { fadeUp, fadeLeft, fadeRight, useAnimateOnce } from '@/lib/motion'
 
 const stats = [
-  { value: '5+', label: 'Years Experience' },
+  { value: '7+', label: 'Years Experience' },
   { value: '20+', label: 'Projects Shipped' },
   { value: '5+', label: 'SaaS Products Built' },
 ]

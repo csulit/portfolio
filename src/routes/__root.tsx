@@ -84,7 +84,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className='antialiased'>
+      <body>
         <LazyMotion features={domAnimation}>
           {children}
         </LazyMotion>
