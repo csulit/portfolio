@@ -29,8 +29,50 @@ export const Route = createRootRoute({
         content:
           'Gelo — Senior Software Engineer & AI Solutions Builder. Full-stack web apps, React Native mobile apps, and AI/LLM-integrated SaaS products.',
       },
+      {
+        name: 'robots',
+        content: 'index, follow, max-image-preview:large',
+      },
+      {
+        name: 'theme-color',
+        content: '#0B0F14',
+      },
+      {
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        property: 'og:url',
+        content: 'https://cgelo.dev',
+      },
+      {
+        property: 'og:title',
+        content: 'Gelo | Senior Software Engineer & AI Solutions Builder',
+      },
+      {
+        property: 'og:description',
+        content:
+          'Full-stack web apps, React Native mobile apps, and AI/LLM-integrated SaaS products.',
+      },
+      {
+        name: 'twitter:card',
+        content: 'summary',
+      },
+      {
+        name: 'twitter:title',
+        content: 'Gelo | Senior Software Engineer & AI Solutions Builder',
+      },
+      {
+        name: 'twitter:description',
+        content:
+          'Full-stack web apps, React Native mobile apps, and AI/LLM-integrated SaaS products.',
+      },
     ],
     links: [
+      {
+        rel: 'canonical',
+        href: 'https://cgelo.dev',
+      },
       {
         rel: 'stylesheet',
         href: appCss,

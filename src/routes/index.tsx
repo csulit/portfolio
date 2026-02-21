@@ -1,26 +1,14 @@
-import { lazy, Suspense } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { Nav } from '@/components/nav'
 import { Hero } from '@/components/hero'
-
-const About = lazy(() =>
-  import('@/components/about').then((m) => ({ default: m.About })),
-)
-const TechStack = lazy(() =>
-  import('@/components/tech-stack').then((m) => ({ default: m.TechStack })),
-)
-const Services = lazy(() =>
-  import('@/components/services').then((m) => ({ default: m.Services })),
-)
-const Projects = lazy(() =>
-  import('@/components/projects').then((m) => ({ default: m.Projects })),
-)
-const Contact = lazy(() =>
-  import('@/components/contact').then((m) => ({ default: m.Contact })),
-)
-const Footer = lazy(() =>
-  import('@/components/footer').then((m) => ({ default: m.Footer })),
-)
+import { About } from '@/components/about'
+import { TechStack } from '@/components/tech-stack'
+import { Services } from '@/components/services'
+// import { Testimonials } from '@/components/testimonials'
+import { Projects } from '@/components/projects'
+// import { Insights } from '@/components/insights'
+import { Contact } from '@/components/contact'
+import { Footer } from '@/components/footer'
 
 export const Route = createFileRoute('/')({ component: HomePage })
 
@@ -30,21 +18,17 @@ function HomePage() {
       <Nav />
       <main className="flex-1">
         <Hero />
-        <Suspense>
-          <About />
-          <TechStack />
-          <Services />
-          {/* TODO: Uncomment when real testimonials are available */}
-          {/* <Testimonials /> */}
-          <Projects />
-          {/* TODO: Uncomment when blog posts are ready */}
-          {/* <Insights /> */}
-          <Contact />
-        </Suspense>
+        <About />
+        <TechStack />
+        <Services />
+        {/* TODO: Uncomment when real testimonials are available */}
+        {/* <Testimonials /> */}
+        <Projects />
+        {/* TODO: Uncomment when blog posts are ready */}
+        {/* <Insights /> */}
+        <Contact />
       </main>
-      <Suspense>
-        <Footer />
-      </Suspense>
+      <Footer />
     </div>
   )
 }
