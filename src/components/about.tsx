@@ -52,13 +52,13 @@ export function About() {
         <m.div
           variants={container(0.1)}
           {...inViewProps}
-          className="flex gap-0 border-t border-border pt-6"
+          className="grid grid-cols-1 gap-6 border-t border-border pt-6 sm:grid-cols-3 sm:gap-0"
         >
           {stats.map((stat) => (
             <m.div
               key={stat.label}
               variants={variants(fadeUp)}
-              className="flex flex-1 flex-col gap-1"
+              className="flex flex-col gap-1"
             >
               <span className="text-4xl font-extrabold tracking-tight text-accent">
                 {stat.value}

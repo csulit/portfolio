@@ -41,7 +41,7 @@ export function Hero() {
         className="max-w-2xl text-center text-lg text-text-secondary"
       >
         I build full-stack web apps, mobile experiences, and AI-powered tools
-        {'\n'}that ship fast and scale further.
+        {'\n'}that ship fast and scale well.
       </m.p>
 
       <m.div
@@ -56,7 +56,7 @@ export function Hero() {
           Get in Touch
         </Link>
         <a
-          href="#" // TODO: Add real GitHub URL
+          href="https://github.com/gelomacariomolo"
           target="_blank"
           rel="noopener noreferrer"
           className="flex w-full items-center justify-center gap-2 rounded-[10px] border border-border bg-surface-alt px-9 py-4 text-center text-base font-bold text-text-primary transition-colors hover:border-text-secondary sm:w-auto"

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
+import { FileCode, Layout, Smartphone } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { m, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { fadeUp, useAnimateOnce } from '@/lib/motion'
@@ -18,6 +20,9 @@ interface Project {
   description: string
   tags: Array<Tag>
   category: string
+  icon: LucideIcon
+  gradient: string
+  iconColor: string
   highlighted?: boolean
 }
 
@@ -36,6 +41,9 @@ const projects: Array<Project> = [
       { label: 'PostgreSQL' },
     ],
     category: 'AI / ML',
+    icon: FileCode,
+    gradient: 'from-accent/20 to-accent/5',
+    iconColor: 'text-accent',
     highlighted: true,
   },
   {
@@ -50,6 +58,9 @@ const projects: Array<Project> = [
       { label: 'BullMQ' },
     ],
     category: 'SaaS',
+    icon: Layout,
+    gradient: 'from-indigo/20 to-indigo/5',
+    iconColor: 'text-indigo',
   },
   {
     title: 'React Native Mobile App',
@@ -61,6 +72,9 @@ const projects: Array<Project> = [
       { label: 'TypeScript' },
     ],
     category: 'Mobile',
+    icon: Smartphone,
+    gradient: 'from-amber/20 to-amber/5',
+    iconColor: 'text-amber',
   },
 ]
 
@@ -146,10 +160,9 @@ function ProjectsPage() {
                     : 'border border-border',
                 )}
               >
-                <div className="flex h-55 items-center justify-center bg-surface-alt">
-                  <span className="text-[13px] font-medium text-text-placeholder">
-                    [ Project Screenshot ]
-                  </span>
+                <div className={cn('flex h-55 flex-col items-center justify-center gap-3 bg-gradient-to-br', project.gradient)}>
+                  <project.icon className={cn('size-10 opacity-60', project.iconColor)} />
+                  <span className="text-xs font-medium tracking-wide text-text-muted">Coming Soon</span>
                 </div>
 
                 <div className="flex flex-1 flex-col gap-3.5 p-6">

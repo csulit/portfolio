@@ -10,5 +10,11 @@
       "database_name": "portfolio-db",
       "database_id": "e1cd6a19-bb5e-46d8-ad74-5bdcc1846efb"
     }
-  ]
+  ],
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    }
+  }
 }

@@ -1,3 +1,5 @@
+import { FileCode, Layout, Smartphone } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { m } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { fadeUp, useAnimateOnce } from '@/lib/motion'
@@ -12,6 +14,9 @@ interface Project {
   title: string
   description: string
   tags: Array<Tag>
+  icon: LucideIcon
+  gradient: string
+  iconColor: string
   highlighted?: boolean
 }
 
@@ -26,6 +31,9 @@ const projects: Array<Project> = [
       { label: 'BullMQ', color: 'text-text-secondary', bg: 'bg-surface' },
       { label: 'PostgreSQL', color: 'text-text-secondary', bg: 'bg-surface' },
     ],
+    icon: FileCode,
+    gradient: 'from-accent/20 to-accent/5',
+    iconColor: 'text-accent',
     highlighted: true,
   },
   {
@@ -38,6 +46,9 @@ const projects: Array<Project> = [
       { label: 'TypeScript', color: 'text-text-secondary', bg: 'bg-surface' },
       { label: 'Prisma', color: 'text-text-secondary', bg: 'bg-surface' },
     ],
+    icon: Layout,
+    gradient: 'from-indigo/20 to-indigo/5',
+    iconColor: 'text-indigo',
   },
   {
     title: 'React Native Mobile App',
@@ -48,6 +59,9 @@ const projects: Array<Project> = [
       { label: 'React Native', color: 'text-text-secondary', bg: 'bg-surface' },
       { label: 'TypeScript', color: 'text-text-secondary', bg: 'bg-surface' },
     ],
+    icon: Smartphone,
+    gradient: 'from-amber/20 to-amber/5',
+    iconColor: 'text-amber',
   },
 ]
 
@@ -92,10 +106,9 @@ export function Projects() {
                 : 'border border-border',
             )}
           >
-            <div className="flex h-50 items-center justify-center bg-surface-alt">
-              <span className="text-[13px] font-medium text-text-placeholder">
-                [ Project Screenshot ]
-              </span>
+            <div className={cn('flex h-50 flex-col items-center justify-center gap-3 bg-gradient-to-br', project.gradient)}>
+              <project.icon className={cn('size-10 opacity-60', project.iconColor)} />
+              <span className="text-xs font-medium tracking-wide text-text-muted">Coming Soon</span>
             </div>
 
             <div className="flex flex-1 flex-col gap-4 p-6">

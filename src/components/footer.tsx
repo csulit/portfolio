@@ -30,7 +30,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-3">
             <a
-              href="#" // TODO: Add real GitHub URL
+              href="https://github.com/gelomacariomolo"
               target="_blank"
               rel="noopener noreferrer"
               className="flex size-10 items-center justify-center rounded-[10px] border border-border bg-surface text-text-secondary transition-colors hover:text-text-primary"
@@ -80,7 +80,7 @@ export function Footer() {
               Fiverr Profile
             </a>
             <a
-              href="#" // TODO: Add real GitHub URL
+              href="https://github.com/gelomacariomolo"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-text-secondary transition-colors hover:text-text-primary"

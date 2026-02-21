@@ -38,7 +38,7 @@ export function Contact() {
           className="flex w-fit items-center gap-3 rounded-xl bg-accent px-6 py-4 text-[15px] font-bold text-background transition-opacity hover:opacity-90"
         >
           <Briefcase className="size-5" />
-          Hire Me on Fiverr
+          View Fiverr Profile
         </a>
       </m.div>
 
