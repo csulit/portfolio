@@ -3,6 +3,7 @@ import { m } from 'framer-motion'
 import { fadeUp, useAnimateOnce } from '@/lib/motion'
 
 interface Testimonial {
+  id: string
   quote: string
   name: string
   role: string
@@ -12,18 +13,21 @@ interface Testimonial {
 // TODO: Add real testimonials from clients
 const testimonials: Array<Testimonial> = [
   {
+    id: 'testimonial-1',
     quote: 'TODO: Add real testimonial',
     name: 'TODO: Client Name',
     role: 'TODO: Role',
     company: 'TODO: Company',
   },
   {
+    id: 'testimonial-2',
     quote: 'TODO: Add real testimonial',
     name: 'TODO: Client Name',
     role: 'TODO: Role',
     company: 'TODO: Company',
   },
   {
+    id: 'testimonial-3',
     quote: 'TODO: Add real testimonial',
     name: 'TODO: Client Name',
     role: 'TODO: Role',
@@ -61,9 +65,9 @@ export function Testimonials() {
         {...inViewProps}
         className="grid w-full grid-cols-1 gap-6 md:grid-cols-3"
       >
-        {testimonials.map((testimonial, index) => (
+        {testimonials.map((testimonial) => (
           <m.blockquote
-            key={index}
+            key={testimonial.id}
             variants={variants(fadeUp)}
             className="flex flex-col gap-6 rounded-[20px] border border-border bg-background p-8"
           >
