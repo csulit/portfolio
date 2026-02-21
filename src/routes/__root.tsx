@@ -24,6 +24,11 @@ export const Route = createRootRoute({
       {
         title: 'Gelo | Senior Software Engineer & AI Solutions Builder',
       },
+      {
+        name: 'description',
+        content:
+          'Gelo — Senior Software Engineer & AI Solutions Builder. Full-stack web apps, React Native mobile apps, and AI/LLM-integrated SaaS products.',
+      },
     ],
     links: [
       {
@@ -40,8 +45,13 @@ export const Route = createRootRoute({
         crossOrigin: 'anonymous',
       },
       {
+        rel: 'preload',
+        as: 'style',
+        href: 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=swap',
+      },
+      {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=swap',
       },
     ],
   }),
