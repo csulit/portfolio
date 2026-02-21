@@ -1,9 +1,59 @@
-import { Briefcase } from 'lucide-react'
-import { m } from 'framer-motion'
-import { fadeLeft, fadeRight, useAnimateOnce } from '@/lib/motion'
+import { useState, useRef, type FormEvent } from 'react'
+import { Briefcase, Loader2, CheckCircle, AlertCircle } from 'lucide-react'
+import { m, AnimatePresence } from 'framer-motion'
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile'
+import { fadeLeft, fadeRight, fadeUp, useAnimateOnce } from '@/lib/motion'
+import { submitContact } from '@/lib/contact-action'
+
+type Status = 'idle' | 'submitting' | 'success' | 'error'
+
+const TURNSTILE_SITE_KEY = '0x4AAAAAAACgPR25YE3q-aaB'
 
 export function Contact() {
   const { inViewProps, variants, container } = useAnimateOnce('contact', 0.2)
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const [status, setStatus] = useState<Status>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
+  const turnstileRef = useRef<TurnstileInstance>(null)
+
+  const canSubmit = turnstileToken && status !== 'submitting'
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault()
+    if (!turnstileToken) return
+
+    setStatus('submitting')
+    setErrorMessage('')
+
+    try {
+      const result = await submitContact({
+        data: { name, email, message, turnstileToken },
+      })
+
+      if (result.success) {
+        setStatus('success')
+        setName('')
+        setEmail('')
+        setMessage('')
+      } else {
+        setStatus('error')
+        setErrorMessage(result.error)
+      }
+    } catch (err) {
+      setStatus('error')
+      setErrorMessage(
+        err instanceof Error ? err.message : 'Something went wrong.',
+      )
+    } finally {
+      // Turnstile tokens are single-use — always reset
+      setTurnstileToken(null)
+      turnstileRef.current?.reset()
+    }
+  }
 
   return (
     <m.section
@@ -45,6 +95,7 @@ export function Contact() {
       <m.form
         variants={variants(fadeRight)}
         className="flex flex-1 flex-col gap-4"
+        onSubmit={handleSubmit}
       >
         <div className="flex flex-col gap-2">
           <label
@@ -56,7 +107,11 @@ export function Contact() {
           <input
             id="name"
             type="text"
+            required
+            maxLength={200}
             placeholder="John Doe"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="h-12 rounded-[10px] border border-border bg-surface px-4 text-[15px] text-text-primary placeholder:text-text-muted focus:border-accent focus:outline-none"
           />
         </div>
@@ -71,7 +126,11 @@ export function Contact() {
           <input
             id="email"
             type="email"
+            required
+            maxLength={320}
             placeholder="john@company.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="h-12 rounded-[10px] border border-border bg-surface px-4 text-[15px] text-text-primary placeholder:text-text-muted focus:border-accent focus:outline-none"
           />
         </div>
@@ -86,17 +145,68 @@ export function Contact() {
           <textarea
             id="message"
             rows={5}
+            required
+            maxLength={5000}
             placeholder="Tell me about your project..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             className="resize-none rounded-[10px] border border-border bg-surface p-4 text-[15px] text-text-primary placeholder:text-text-muted focus:border-accent focus:outline-none"
           />
         </div>
 
+        <Turnstile
+          ref={turnstileRef}
+          siteKey={TURNSTILE_SITE_KEY}
+          options={{ theme: 'dark', size: 'flexible' }}
+          onSuccess={setTurnstileToken}
+          onError={() => setTurnstileToken(null)}
+          onExpire={() => setTurnstileToken(null)}
+        />
+
         <button
           type="submit"
-          className="flex w-full items-center justify-center rounded-[10px] bg-accent px-8 py-4 text-base font-bold text-background shadow-[0_8px_24px_#5CCC8E40] transition-opacity hover:opacity-90"
+          disabled={!canSubmit}
+          className="flex w-full items-center justify-center gap-2 rounded-[10px] bg-accent px-8 py-4 text-base font-bold text-background shadow-[0_8px_24px_#5CCC8E40] transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          Send Message
+          {status === 'submitting' ? (
+            <>
+              <Loader2 className="size-5 animate-spin" />
+              Sending...
+            </>
+          ) : (
+            'Send Message'
+          )}
         </button>
+
+        <AnimatePresence mode="wait">
+          {status === 'success' && (
+            <m.div
+              key="success"
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="flex items-center gap-2 rounded-[10px] border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-accent"
+            >
+              <CheckCircle className="size-4 shrink-0" />
+              Message sent! I&apos;ll get back to you soon.
+            </m.div>
+          )}
+
+          {status === 'error' && (
+            <m.div
+              key="error"
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="flex items-center gap-2 rounded-[10px] border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400"
+            >
+              <AlertCircle className="size-4 shrink-0" />
+              {errorMessage || 'Something went wrong. Please try again.'}
+            </m.div>
+          )}
+        </AnimatePresence>
       </m.form>
     </m.section>
   )
