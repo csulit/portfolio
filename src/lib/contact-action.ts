@@ -3,7 +3,7 @@ import { createServerFn } from '@tanstack/react-start'
 type ContactResult = { success: true } | { success: false; error: string }
 
 export const submitContact = createServerFn({ method: 'POST' })
-  .validator(
+  .inputValidator(
     (
       data: unknown,
     ): {
