@@ -3,6 +3,7 @@ import { m } from 'framer-motion'
 import { fadeUp, useAnimateOnce } from '@/lib/motion'
 
 interface Post {
+  id: string
   title: string
   excerpt: string
   date: string
@@ -11,18 +12,21 @@ interface Post {
 // TODO: Replace with real blog posts or connect to a CMS
 const posts: Array<Post> = [
   {
+    id: 'post-1',
     title: 'TODO: Add blog post title',
     excerpt:
       'TODO: Add a short excerpt or summary of the blog post here.',
     date: '2026-02-01',
   },
   {
+    id: 'post-2',
     title: 'TODO: Add blog post title',
     excerpt:
       'TODO: Add a short excerpt or summary of the blog post here.',
     date: '2026-01-15',
   },
   {
+    id: 'post-3',
     title: 'TODO: Add blog post title',
     excerpt:
       'TODO: Add a short excerpt or summary of the blog post here.',
@@ -68,9 +72,9 @@ export function Insights() {
         {...inViewProps}
         className="grid w-full grid-cols-1 gap-6 md:grid-cols-3"
       >
-        {posts.map((post, index) => (
+        {posts.map((post) => (
           <m.article
-            key={index}
+            key={post.id}
             variants={variants(fadeUp)}
             className="group flex flex-col gap-4 rounded-[20px] border border-border bg-surface p-7 transition-colors hover:border-text-muted"
           >
