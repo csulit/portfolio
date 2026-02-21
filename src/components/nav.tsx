@@ -19,7 +19,7 @@ export function Nav() {
     <m.nav
       variants={variants(navSlide)}
       {...mountProps}
-      className="sticky top-0 z-50 bg-background/80 backdrop-blur-md"
+      className="sticky top-0 z-50 bg-background/95 md:bg-background/80 md:backdrop-blur-md"
     >
       <div className="flex h-18 items-center justify-between px-6 lg:px-20">
         <Link to="/" className="text-[22px] font-extrabold tracking-tight text-accent">
