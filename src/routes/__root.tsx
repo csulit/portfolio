@@ -55,8 +55,37 @@ export const Route = createRootRoute({
           'Full-stack web apps, React Native mobile apps, and AI/LLM-integrated SaaS products.',
       },
       {
+        property: 'og:image',
+        content: 'https://cgelo.dev/og.png',
+      },
+      {
+        property: 'og:image:width',
+        content: '1200',
+      },
+      {
+        property: 'og:image:height',
+        content: '630',
+      },
+      {
+        property: 'og:image:type',
+        content: 'image/png',
+      },
+      {
+        property: 'og:image:alt',
+        content:
+          'Gelo — Senior Software Engineer & AI Solutions Builder',
+      },
+      {
+        property: 'og:site_name',
+        content: 'cgelo.dev',
+      },
+      {
+        property: 'og:locale',
+        content: 'en_US',
+      },
+      {
         name: 'twitter:card',
-        content: 'summary',
+        content: 'summary_large_image',
       },
       {
         name: 'twitter:title',
@@ -67,8 +96,21 @@ export const Route = createRootRoute({
         content:
           'Full-stack web apps, React Native mobile apps, and AI/LLM-integrated SaaS products.',
       },
+      {
+        name: 'twitter:image',
+        content: 'https://cgelo.dev/og.png',
+      },
+      {
+        name: 'twitter:image:alt',
+        content:
+          'Gelo — Senior Software Engineer & AI Solutions Builder',
+      },
     ],
     links: [
+      {
+        rel: 'manifest',
+        href: '/manifest.json',
+      },
       {
         rel: 'canonical',
         href: 'https://cgelo.dev',
