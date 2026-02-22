@@ -1,4 +1,4 @@
-import { useState, useRef, type FormEvent } from 'react'
+import { useState, useRef, type SyntheticEvent } from 'react'
 import { Briefcase, Loader2, CheckCircle, AlertCircle } from 'lucide-react'
 import { m, AnimatePresence } from 'framer-motion'
 import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile'
@@ -22,7 +22,7 @@ export function Contact() {
 
   const canSubmit = turnstileToken && submission.status !== 'submitting'
 
-  async function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault()
     if (!turnstileToken) return
 
