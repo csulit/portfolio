@@ -69,7 +69,7 @@ export function NewsletterSection() {
             placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="h-12 flex-1 rounded-xl border border-border bg-background px-4 text-[15px] text-text-primary placeholder:text-text-muted focus:border-accent focus:outline-none"
+            className="min-h-12 w-full rounded-xl border border-border bg-background px-4 py-3 text-[15px] text-text-primary placeholder:text-text-muted focus:border-accent focus:outline-none"
           />
           <button
             type="submit"
