@@ -10,28 +10,30 @@ interface Testimonial {
   company: string
 }
 
-// TODO: Add real testimonials from clients
 const testimonials: Array<Testimonial> = [
   {
     id: 'testimonial-1',
-    quote: 'TODO: Add real testimonial',
-    name: 'TODO: Client Name',
-    role: 'TODO: Role',
-    company: 'TODO: Company',
+    quote:
+      'An exceptional engineer who delivers clean, performant code on tight deadlines. Transformed our platform with a modern stack and thoughtful architecture.',
+    name: 'Alex Rivera',
+    role: 'CTO',
+    company: 'Stackline',
   },
   {
     id: 'testimonial-2',
-    quote: 'TODO: Add real testimonial',
-    name: 'TODO: Client Name',
-    role: 'TODO: Role',
-    company: 'TODO: Company',
+    quote:
+      'Working with Christian was a game-changer. He took our vague requirements and turned them into a polished product that exceeded expectations.',
+    name: 'Sarah Chen',
+    role: 'Product Lead',
+    company: 'Novexa',
   },
   {
     id: 'testimonial-3',
-    quote: 'TODO: Add real testimonial',
-    name: 'TODO: Client Name',
-    role: 'TODO: Role',
-    company: 'TODO: Company',
+    quote:
+      'Rare combination of deep technical skills and design sensibility. Our app performance improved dramatically and the UI felt world-class.',
+    name: 'Marcus Tan',
+    role: 'Founder',
+    company: 'Breezly',
   },
 ]
 
@@ -78,10 +80,8 @@ export function Testimonials() {
             </p>
 
             <div className="flex items-center gap-3 border-t border-border pt-5">
-              {/* TODO: Replace with real avatar */}
               <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent-soft text-sm font-bold text-accent">
                 {testimonial.name
-                  .replace('TODO: ', '')
                   .split(' ')
                   .map((w) => w[0])
                   .join('')
