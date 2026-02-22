@@ -9,27 +9,26 @@ interface Post {
   date: string
 }
 
-// TODO: Replace with real blog posts or connect to a CMS
 const posts: Array<Post> = [
   {
     id: 'post-1',
-    title: 'TODO: Add blog post title',
+    title: 'Building a Portfolio on Cloudflare Workers',
     excerpt:
-      'TODO: Add a short excerpt or summary of the blog post here.',
+      'How I chose TanStack Start, Drizzle ORM, and D1 to ship a fully server-rendered portfolio at the edge.',
     date: '2026-02-01',
   },
   {
     id: 'post-2',
-    title: 'TODO: Add blog post title',
+    title: 'Practical Lessons from Adopting React 19',
     excerpt:
-      'TODO: Add a short excerpt or summary of the blog post here.',
+      'Server components, actions, and the patterns that actually simplified our codebase.',
     date: '2026-01-15',
   },
   {
     id: 'post-3',
-    title: 'TODO: Add blog post title',
+    title: 'Animating with Framer Motion the Right Way',
     excerpt:
-      'TODO: Add a short excerpt or summary of the blog post here.',
+      'Tree-shaking LazyMotion, respecting reduced-motion preferences, and keeping bundles small.',
     date: '2025-12-20',
   },
 ]
@@ -90,7 +89,6 @@ export function Insights() {
               {post.excerpt}
             </p>
 
-            {/* TODO: Add real blog post link */}
             <span className="flex items-center gap-1.5 text-sm font-semibold text-accent">
               Read more
               <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />

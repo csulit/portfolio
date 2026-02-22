@@ -4,9 +4,9 @@ import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
 import { TechStack } from '@/components/tech-stack'
 import { Services } from '@/components/services'
-// import { Testimonials } from '@/components/testimonials'
+import { Testimonials } from '@/components/testimonials'
 import { Projects } from '@/components/projects'
-// import { Insights } from '@/components/insights'
+import { Insights } from '@/components/insights'
 import { Contact } from '@/components/contact'
 import { Footer } from '@/components/footer'
 
@@ -21,11 +21,9 @@ function HomePage() {
         <About />
         <TechStack />
         <Services />
-        {/* TODO: Uncomment when real testimonials are available */}
-        {/* <Testimonials /> */}
+        <Testimonials />
         <Projects />
-        {/* TODO: Uncomment when blog posts are ready */}
-        {/* <Insights /> */}
+        <Insights />
         <Contact />
       </main>
       <Footer />

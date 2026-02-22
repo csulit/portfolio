@@ -16,7 +16,7 @@ function markPlayed(key: string): void {
 
 // --- Transitions ---
 
-export const defaultTransition: Transition = {
+const defaultTransition: Transition = {
   duration: 0.5,
   ease: [0.25, 0.1, 0.25, 1],
 }
