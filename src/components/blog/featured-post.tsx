@@ -19,7 +19,7 @@ export function FeaturedPost({ post }: { post: BlogPost }) {
     >
       <div className="overflow-hidden rounded-3xl border border-accent-glow bg-surface shadow-[0_4px_24px_var(--color-accent-muted)]">
         <div className="flex flex-col lg:flex-row">
-          <div className="hidden lg:flex lg:w-[360px] xl:w-[480px] shrink-0 items-center justify-center bg-gradient-to-br from-accent/20 to-accent/5">
+          <div className="hidden lg:flex lg:w-90 xl:w-120 shrink-0 items-center justify-center bg-linear-to-br from-accent/20 to-accent/5">
             <Sparkles className="size-16 text-accent opacity-40" />
           </div>
 

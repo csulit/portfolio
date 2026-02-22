@@ -76,7 +76,7 @@ export function BlogGrid({ posts, activeFilter, onFilterChange }: BlogGridProps)
                   transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                   className="group flex flex-col overflow-hidden rounded-[20px] border border-border bg-background"
                 >
-                  <div className="flex h-50 items-center justify-center bg-gradient-to-br from-accent/10 to-indigo/10">
+                  <div className="flex h-50 items-center justify-center bg-linear-to-br from-accent/10 to-indigo/10">
                     <span className="text-xs font-medium tracking-wide text-text-muted">
                       {post.category}
                     </span>
