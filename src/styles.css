@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Work Sans", ui-sans-serif, system-ui, sans-serif;
 
   --color-background: #121215;
   --color-surface: #1C1C21;
@@ -30,7 +31,17 @@ html {
 }
 
 body {
-  @apply m-0 bg-background text-text-primary font-sans antialiased;
+  @apply m-0 bg-background text-text-primary antialiased;
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
 }
 
 @media (prefers-reduced-motion: reduce) {

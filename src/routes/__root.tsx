@@ -131,11 +131,11 @@ export const Route = createRootRoute({
       {
         rel: 'preload',
         as: 'style',
-        href: 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&family=Work+Sans:wght@300;400;500;600&display=swap',
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700;9..40,800&family=Work+Sans:wght@300;400;500;600&display=swap',
       },
     ],
   }),
