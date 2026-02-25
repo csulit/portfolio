@@ -1,3 +1,7 @@
+---
+model: haiku
+---
+
 Merge a pull request, delete its branch, and sync local/remote branches.
 
 Follow these steps exactly:

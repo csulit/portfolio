@@ -1,3 +1,7 @@
+---
+model: haiku
+---
+
 Create a new branch, commit all changes, push, and open a PR to main.
 
 Follow these steps exactly:
