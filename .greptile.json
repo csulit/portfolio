@@ -31,7 +31,7 @@
     "rules": [
       {
         "scope": ["src/**/*.ts", "src/**/*.tsx"],
-        "rule": "All imports from the src directory MUST use the '@/' path alias (e.g. '@/components/nav', '@/lib/utils'). Never use relative imports like '../' or './' when referencing files inside src/. The '#/' alias is also acceptable but '@/' is preferred for consistency."
+        "rule": "All imports from the src directory MUST use the '@/' path alias (e.g. '@/components/nav', '@/lib/utils'). Never use relative imports like '../' or './' when referencing files inside src/."
       },
       {
         "scope": ["src/**/*.ts", "src/**/*.tsx"],
@@ -43,7 +43,7 @@
       },
       {
         "scope": ["src/**/*.tsx"],
-        "rule": "Use Tailwind CSS semantic theme color tokens defined in styles.css (e.g. 'text-primary', 'text-secondary', 'text-muted', 'bg-surface', 'border-default', 'accent', 'accent-soft', 'accent-glow'). Do NOT hardcode hex colors like '#121215' or '#5CCC8E' directly in components. All colors should reference the theme system."
+        "rule": "Use Tailwind CSS semantic theme color tokens defined in styles.css (e.g. 'text-text-primary', 'text-text-secondary', 'text-text-muted', 'bg-background', 'bg-surface', 'border-border', 'text-accent', 'bg-accent-soft', 'shadow-accent-glow'). Do NOT hardcode hex colors like '#121215' or '#5CCC8E' directly in components. All colors should reference the theme system."
       },
       {
         "scope": ["src/components/**/*.tsx"],
