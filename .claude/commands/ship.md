@@ -1,5 +1,5 @@
 ---
-model: haiku
+model: sonnet
 ---
 
 Create a new branch, commit all changes, push, and open a PR to main.

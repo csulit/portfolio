@@ -1,5 +1,5 @@
 ---
-model: haiku
+model: sonnet
 ---
 
 Merge a pull request, delete its branch, and sync local/remote branches.
