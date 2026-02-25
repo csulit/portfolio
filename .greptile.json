@@ -43,7 +43,7 @@
       },
       {
         "scope": ["src/**/*.tsx"],
-        "rule": "Use Tailwind CSS semantic theme color tokens defined in styles.css (e.g. 'text-text-primary', 'text-text-secondary', 'text-text-muted', 'bg-background', 'bg-surface', 'border-border', 'text-accent', 'bg-accent-soft', 'shadow-accent-glow'). Do NOT hardcode hex colors like '#121215' or '#5CCC8E' directly in components. All colors should reference the theme system."
+        "rule": "Use Tailwind CSS semantic theme color tokens defined in styles.css (e.g. 'text-text-primary', 'text-text-secondary', 'text-text-muted', 'bg-background', 'bg-surface', 'border-border', 'text-accent', 'bg-accent-soft', 'border-accent-glow'). Do NOT hardcode hex colors like '#121215' or '#5CCC8E' directly in components. All colors should reference the theme system."
       },
       {
         "scope": ["src/components/**/*.tsx"],
