@@ -1,4 +1,5 @@
 import { Clock } from 'lucide-react'
+import { Link } from '@tanstack/react-router'
 import { m, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { fadeUp, useAnimateOnce } from '@/lib/motion'
@@ -62,10 +63,7 @@ export function BlogGrid({ posts, activeFilter, onFilterChange }: BlogGridProps)
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {filtered.map((post) => {
-              const colors =
-                CATEGORY_COLORS[
-                  post.category === 'All' ? 'Engineering' : post.category
-                ]
+              const colors = CATEGORY_COLORS[post.category]
               return (
                 <m.article
                   key={post.id}
@@ -76,10 +74,21 @@ export function BlogGrid({ posts, activeFilter, onFilterChange }: BlogGridProps)
                   transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                   className="group flex flex-col overflow-hidden rounded-[20px] border border-border bg-background"
                 >
-                  <div className="flex h-50 items-center justify-center bg-linear-to-br from-accent/10 to-indigo/10">
-                    <span className="text-xs font-medium tracking-wide text-text-muted">
-                      {post.category}
-                    </span>
+                  <div className="h-50 overflow-hidden bg-linear-to-br from-accent/10 to-indigo/10">
+                    {post.coverImage ? (
+                      <img
+                        src={post.coverImage}
+                        alt={post.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center">
+                        <span className="text-xs font-medium tracking-wide text-text-muted">
+                          {post.category}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   <div className="flex flex-1 flex-col gap-3.5 p-7">
@@ -90,7 +99,13 @@ export function BlogGrid({ posts, activeFilter, onFilterChange }: BlogGridProps)
                     </span>
 
                     <h3 className="text-lg font-bold leading-snug tracking-tight text-text-primary">
-                      {post.title}
+                      <Link
+                        to="/blog/$slug"
+                        params={{ slug: post.slug }}
+                        className="transition-colors group-hover:text-accent"
+                      >
+                        {post.title}
+                      </Link>
                     </h3>
 
                     <p className="flex-1 text-sm leading-relaxed text-text-secondary">

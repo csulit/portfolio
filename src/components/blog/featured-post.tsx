@@ -1,4 +1,5 @@
 import { ArrowRight, Sparkles, Clock } from 'lucide-react'
+import { Link } from '@tanstack/react-router'
 import { m } from 'framer-motion'
 import { fadeUp, useAnimateOnce } from '@/lib/motion'
 import {
@@ -9,7 +10,7 @@ import {
 
 export function FeaturedPost({ post }: { post: BlogPost }) {
   const { inViewProps, variants } = useAnimateOnce('blog-featured', 0.2)
-  const colors = CATEGORY_COLORS[post.category === 'All' ? 'Engineering' : post.category]
+  const colors = CATEGORY_COLORS[post.category]
 
   return (
     <m.section
@@ -51,13 +52,14 @@ export function FeaturedPost({ post }: { post: BlogPost }) {
               </span>
             </div>
 
-            <button
-              type="button"
+            <Link
+              to="/blog/$slug"
+              params={{ slug: post.slug }}
               className="flex w-fit items-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-[15px] font-bold text-background transition-opacity hover:opacity-90"
             >
               Read Article
               <ArrowRight className="size-4" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
