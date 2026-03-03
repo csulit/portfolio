@@ -13,3 +13,4 @@ __unconfig*
 todos.json
 .dev.vars
 .claude/settings.local.json
+opencode.json
