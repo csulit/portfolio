@@ -1,45 +1,10 @@
 import { ArrowRight } from 'lucide-react'
+import { Link } from '@tanstack/react-router'
 import { m } from 'framer-motion'
 import { fadeUp, useAnimateOnce } from '@/lib/motion'
+import { getPublishedPosts, formatDate } from '@/lib/blog-data'
 
-interface Post {
-  id: string
-  title: string
-  excerpt: string
-  date: string
-}
-
-const posts: Array<Post> = [
-  {
-    id: 'post-1',
-    title: 'Building a Portfolio on Cloudflare Workers',
-    excerpt:
-      'How I chose TanStack Start, Drizzle ORM, and D1 to ship a fully server-rendered portfolio at the edge.',
-    date: '2026-02-01',
-  },
-  {
-    id: 'post-2',
-    title: 'Practical Lessons from Adopting React 19',
-    excerpt:
-      'Server components, actions, and the patterns that actually simplified our codebase.',
-    date: '2026-01-15',
-  },
-  {
-    id: 'post-3',
-    title: 'Animating with Framer Motion the Right Way',
-    excerpt:
-      'Tree-shaking LazyMotion, respecting reduced-motion preferences, and keeping bundles small.',
-    date: '2025-12-20',
-  },
-]
-
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  })
-}
+const latestPosts = getPublishedPosts().slice(0, 3)
 
 export function Insights() {
   const { inViewProps, variants, container } = useAnimateOnce('insights', 0.2)
@@ -71,14 +36,14 @@ export function Insights() {
         {...inViewProps}
         className="grid w-full grid-cols-1 gap-6 md:grid-cols-3"
       >
-        {posts.map((post) => (
+        {latestPosts.map((post) => (
           <m.article
             key={post.id}
             variants={variants(fadeUp)}
             className="group flex flex-col gap-4 rounded-[20px] border border-border bg-surface p-7 transition-colors hover:border-text-muted"
           >
             <time className="text-xs font-medium text-text-muted">
-              {formatDate(post.date)}
+              {formatDate(post.createdAt)}
             </time>
 
             <h3 className="text-lg font-bold leading-snug tracking-tight text-text-primary">
@@ -89,10 +54,14 @@ export function Insights() {
               {post.excerpt}
             </p>
 
-            <span className="flex items-center gap-1.5 text-sm font-semibold text-accent">
+            <Link
+              to="/blog/$slug"
+              params={{ slug: post.slug }}
+              className="flex items-center gap-1.5 text-sm font-semibold text-accent"
+            >
               Read more
               <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-            </span>
+            </Link>
           </m.article>
         ))}
       </m.div>
