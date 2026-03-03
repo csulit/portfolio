@@ -5,15 +5,13 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { NewsletterSection } from '@/components/blog/newsletter-section'
 import { fadeUp, useAnimateOnce } from '@/lib/motion'
-import { BLOG_POSTS, CATEGORY_COLORS, formatDate } from '@/lib/blog-data'
+import { BLOG_POSTS, CATEGORY_COLORS, formatDate, getPublishedPosts } from '@/lib/blog-data'
 
 const SITE_URL = 'https://cgelo.dev'
 
 export const Route = createFileRoute('/blog/$slug')({
   loader: ({ params: { slug } }) => {
-    const sortedPosts = BLOG_POSTS.filter((item) => item.published).sort(
-      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-    )
+    const sortedPosts = getPublishedPosts()
     const post = sortedPosts.find((item) => item.slug === slug)
 
     if (!post) {

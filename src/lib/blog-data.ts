@@ -35,11 +35,18 @@ export const CATEGORY_COLORS: Record<BlogPostCategory, { bg: string; text: strin
   Career: { bg: 'bg-amber-soft', text: 'text-amber' },
 }
 
+export function getPublishedPosts(): Array<BlogPost> {
+  return BLOG_POSTS.filter((p) => p.published).sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  )
+}
+
 export function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
+    timeZone: 'UTC',
   })
 }
 

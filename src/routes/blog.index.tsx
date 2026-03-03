@@ -6,13 +6,13 @@ import { BlogHero } from '@/components/blog/blog-hero'
 import { FeaturedPost } from '@/components/blog/featured-post'
 import { BlogGrid } from '@/components/blog/blog-grid'
 import { NewsletterSection } from '@/components/blog/newsletter-section'
-import { BLOG_POSTS, type BlogCategory } from '@/lib/blog-data'
+import { getPublishedPosts, type BlogCategory } from '@/lib/blog-data'
 
 const SITE_URL = 'https://cgelo.dev'
 
 export const Route = createFileRoute('/blog/')({
   loader: () => {
-    const publishedPosts = BLOG_POSTS.filter((post) => post.published)
+    const publishedPosts = getPublishedPosts()
     const featuredPost = publishedPosts.find((post) => post.featured)
     const latestPosts = featuredPost
       ? publishedPosts.filter((post) => post.slug !== featuredPost.slug)
