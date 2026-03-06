@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
-import { Github, Briefcase } from 'lucide-react'
+import { Briefcase } from 'lucide-react'
+import { GithubIcon } from '@/components/icons'
 import { m } from 'framer-motion'
 import { fadeIn, useAnimateOnce } from '@/lib/motion'
 
@@ -37,7 +38,7 @@ export function Footer() {
               className="flex size-10 items-center justify-center rounded-[10px] border border-border bg-surface text-text-secondary transition-colors hover:text-text-primary"
               aria-label="GitHub"
             >
-              <Github className="size-4.5" />
+              <GithubIcon className="size-4.5" />
             </a>
             <a
               href="https://www.fiverr.com/ccsulit?public_mode=true"
