@@ -12,5 +12,5 @@ dist-ssr
 __unconfig*
 todos.json
 .dev.vars
-.claude/settings.local.json
+.claude
 opencode.json
