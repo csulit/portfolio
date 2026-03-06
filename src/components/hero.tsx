@@ -1,7 +1,9 @@
 import { Link } from '@tanstack/react-router'
-import { MapPin, Github } from 'lucide-react'
+import { MapPin } from 'lucide-react'
+import { GithubIcon } from '@/components/icons'
 import { m } from 'framer-motion'
 import { fadeUp, fadeIn, scaleIn, useAnimateOnce } from '@/lib/motion'
+import { Button } from '@/components/ui/button'
 
 export function Hero() {
   const { mountProps, variants, container } = useAnimateOnce('hero')
@@ -48,20 +50,19 @@ export function Hero() {
         variants={variants(fadeUp)}
         className="flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row"
       >
-        <Link
-          to="/"
-          hash="contact"
-          className="w-full rounded-[10px] bg-accent px-9 py-4 text-center text-base font-bold text-background shadow-[0_8px_32px_#5CCC8E50] transition-opacity hover:opacity-90 sm:w-auto"
+        <Button
+          render={<Link to="/" hash="contact" />}
+          className="h-auto w-full rounded-[10px] bg-accent px-9 py-4 text-base font-bold text-background shadow-[0_8px_32px_#5CCC8E50] transition-opacity hover:bg-accent/90 sm:w-auto"
         >
           Get in Touch
-        </Link>
+        </Button>
         <a
           href="https://github.com/gelomacariomolo"
           target="_blank"
           rel="noopener noreferrer"
           className="flex w-full items-center justify-center gap-2 rounded-[10px] border border-border bg-surface-alt px-9 py-4 text-center text-base font-bold text-text-primary transition-colors hover:border-text-secondary sm:w-auto"
         >
-          <Github className="size-5" />
+          <GithubIcon className="size-5" />
           View My GitHub
         </a>
       </m.div>
