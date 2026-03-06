@@ -1,10 +1,15 @@
 import { useChat } from '@ai-sdk/react'
 import { DefaultChatTransport } from 'ai'
 import { AnimatePresence, m } from 'framer-motion'
-import { MessageCircle, X, ArrowUp, Square } from 'lucide-react'
+import { MessageCircle, X, ArrowUp, Square, RotateCcw } from 'lucide-react'
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Streamdown } from 'streamdown'
 import { code } from '@streamdown/code'
+import {
+  Conversation,
+  ConversationContent,
+  ConversationScrollButton,
+} from '@/components/ai-elements/conversation'
 import { Suggestion } from '@/components/ai-elements/suggestion'
 import { Button } from '@/components/ui/button'
 import { Spinner } from '@/components/ui/spinner'
@@ -45,7 +50,6 @@ export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
   const [input, setInput] = useState('')
   const [provider, setProvider] = useState<AIProvider>(DEFAULT_PROVIDER)
-  const scrollRef = useRef<HTMLDivElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const chatTransport = useMemo(
@@ -53,21 +57,12 @@ export function ChatWidget() {
     [provider],
   )
 
-  const { messages, sendMessage, status, stop, error } = useChat({
+  const { messages, sendMessage, status, stop, error, reload } = useChat({
     transport: chatTransport,
   })
 
   const isStreaming = status === 'streaming'
   const isLoading = status === 'submitted' || isStreaming
-
-  const scrollToBottom = useCallback(() => {
-    const el = scrollRef.current
-    if (el) el.scrollTop = el.scrollHeight
-  }, [])
-
-  useEffect(() => {
-    scrollToBottom()
-  }, [messages, scrollToBottom])
 
   useEffect(() => {
     if (isOpen) textareaRef.current?.focus()
@@ -168,12 +163,10 @@ export function ChatWidget() {
             </div>
 
             {/* Messages area */}
-            <div
-              ref={scrollRef}
-              className="flex-1 overflow-y-auto scroll-smooth p-4"
-            >
+            <Conversation>
+              <ConversationContent className="gap-4">
               {messages.length === 0 ? (
-                <div className="flex h-full flex-col items-center justify-center gap-4 px-4 text-center">
+                <div className="flex min-h-full flex-col items-center justify-center gap-4 px-4 text-center">
                   <div className="flex size-12 items-center justify-center rounded-full bg-accent-muted">
                     <MessageCircle className="size-6 text-accent" />
                   </div>
@@ -242,13 +235,23 @@ export function ChatWidget() {
                     </div>
                   ))}
                   {error && (
-                    <div className="rounded-lg bg-destructive/10 px-3 py-2 text-xs text-destructive">
-                      Something went wrong. Please try again.
+                    <div className="flex items-center gap-2 rounded-lg bg-destructive/10 px-3 py-2 text-xs text-destructive">
+                      <span className="flex-1">Something went wrong.</span>
+                      <button
+                        type="button"
+                        onClick={() => reload()}
+                        className="inline-flex items-center gap-1 font-medium underline underline-offset-2 hover:opacity-80"
+                      >
+                        <RotateCcw className="size-3" />
+                        Retry
+                      </button>
                     </div>
                   )}
                 </div>
               )}
-            </div>
+              </ConversationContent>
+              <ConversationScrollButton className="bg-surface-alt text-text-secondary hover:bg-surface-alt hover:text-text-primary" />
+            </Conversation>
 
             {/* Input area */}
             <div className="shrink-0 border-t border-border bg-surface p-3">
