@@ -134,22 +134,20 @@ export function ChatWidget() {
                 </h2>
               </div>
               <div className="flex items-center gap-1">
-                {import.meta.env.DEV && (
-                  <select
-                    value={provider}
-                    onChange={(e) =>
-                      setProvider(e.target.value as AIProvider)
-                    }
-                    disabled={isLoading}
-                    className="rounded border border-border bg-surface-alt px-1.5 py-0.5 text-xs text-text-secondary disabled:opacity-50"
-                  >
-                    {AI_PROVIDERS.map((p) => (
-                      <option key={p} value={p}>
-                        {p.toUpperCase()}
-                      </option>
-                    ))}
-                  </select>
-                )}
+                <select
+                  value={provider}
+                  onChange={(e) =>
+                    setProvider(e.target.value as AIProvider)
+                  }
+                  disabled={isLoading}
+                  className="rounded border border-border bg-surface-alt px-1.5 py-0.5 text-xs text-text-secondary disabled:opacity-50"
+                >
+                  {AI_PROVIDERS.map((p) => (
+                    <option key={p} value={p}>
+                      {p.toUpperCase()}
+                    </option>
+                  ))}
+                </select>
                 <Button
                   variant="ghost"
                   size="icon-sm"
