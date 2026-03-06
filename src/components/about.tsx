@@ -39,15 +39,21 @@ export function About() {
       >
         <p className="text-base leading-[1.7] text-text-primary">
           I&apos;m Gelo — a Senior Software Engineer and solo founder based in
-          the Philippines. I specialize in building production-grade full-stack
-          web applications, React Native mobile apps, and AI/LLM-integrated SaaS
-          products.
+          the Philippines, helping startups and businesses bring their software
+          ideas to life. I specialize in building production-grade full-stack web
+          applications, React Native mobile apps, and AI-powered SaaS products —
+          from concept to deployment.
         </p>
         <p className="text-base leading-[1.7] text-text-secondary">
-          With deep expertise in TypeScript, React, PostgreSQL, and modern AI
-          tooling, I help startups and businesses go from idea to launched
-          product — fast. I&apos;ve shipped SaaS platforms, built mobile apps,
-          and integrated cutting-edge LLM pipelines into real-world products.
+          Whether you need a complete SaaS platform, a mobile app, or AI/LLM
+          capabilities integrated into your product, I deliver end-to-end
+          solutions built for performance and scale — using whatever technology
+          fits your project best.
+        </p>
+        <p className="text-base leading-[1.7] text-text-secondary">
+          I work directly with founders and teams who want a technical partner,
+          not just a developer. You get clear communication, fast iteration, and
+          production-ready code — shipped on time.
         </p>
         <m.div
           variants={container(0.1)}

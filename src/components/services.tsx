@@ -20,7 +20,7 @@ const services: Array<Service> = [
     iconBg: 'bg-accent-soft',
     title: 'Full-Stack Web Apps',
     description:
-      'Scalable, fast, and modern web applications built with React, TypeScript, and PostgreSQL. From MVPs to production SaaS.',
+      'Custom web applications designed to grow with your business. Whether it\u2019s an internal tool, a customer-facing platform, or a full SaaS product \u2014 I build it fast, reliable, and ready to scale.',
   },
   {
     icon: Smartphone,
@@ -28,7 +28,7 @@ const services: Array<Service> = [
     iconBg: 'bg-indigo-soft',
     title: 'Mobile Apps',
     description:
-      'Cross-platform iOS & Android apps with React Native. Native feel, shared codebase, and smooth UX baked in.',
+      'Cross-platform iOS & Android apps with a native feel and smooth UX. One codebase, two platforms, faster time to market.',
   },
   {
     icon: Cpu,
@@ -36,7 +36,7 @@ const services: Array<Service> = [
     iconBg: 'bg-accent-muted',
     title: 'AI / LLM Integration',
     description:
-      'Integrate GPT-4, Claude, Gemini and other LLMs into your product. RAG pipelines, agents, prompt engineering, and more.',
+      'Bring AI into your product \u2014 from intelligent assistants and content generation to automated workflows and data analysis. I handle the architecture so you get real results, not just a demo.',
     highlighted: true,
   },
   {
@@ -45,7 +45,7 @@ const services: Array<Service> = [
     iconBg: 'bg-amber-soft',
     title: 'SaaS MVP Development',
     description:
-      'Launch your SaaS fast. Auth, billing, dashboards, and core features — built right and ready to scale from day one.',
+      'Go from idea to paying customers, fast. Authentication, billing, dashboards, and your core features \u2014 built right and ready to scale from day one.',
   },
 ]
 
