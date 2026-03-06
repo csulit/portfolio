@@ -65,7 +65,11 @@ export function ChatWidget() {
   const isLoading = status === 'submitted' || isStreaming
 
   useEffect(() => {
-    if (isOpen) textareaRef.current?.focus()
+    if (isOpen) {
+      // Delay focus to avoid iOS Safari auto-zoom during panel animation
+      const timeout = setTimeout(() => textareaRef.current?.focus(), 300)
+      return () => clearTimeout(timeout)
+    }
   }, [isOpen])
 
   const handleSend = useCallback(
@@ -140,7 +144,7 @@ export function ChatWidget() {
                     setProvider(e.target.value as AIProvider)
                   }
                   disabled={isLoading}
-                  className="rounded border border-border bg-surface-alt px-1.5 py-0.5 text-xs text-text-secondary disabled:opacity-50"
+                  className="rounded border border-border bg-surface-alt px-1.5 py-0.5 text-base text-text-secondary disabled:opacity-50 sm:text-xs"
                 >
                   {AI_PROVIDERS.map((p) => (
                     <option key={p} value={p}>
@@ -264,7 +268,7 @@ export function ChatWidget() {
                   onKeyDown={handleKeyDown}
                   placeholder="Ask about Gelo's services..."
                   rows={1}
-                  className="max-h-20 min-h-9 flex-1 resize-none bg-transparent px-2 py-1.5 text-sm text-text-primary outline-none placeholder:text-text-placeholder field-sizing-content sm:max-h-24"
+                  className="max-h-20 min-h-9 flex-1 resize-none bg-transparent px-2 py-1.5 text-base text-text-primary outline-none placeholder:text-text-placeholder field-sizing-content sm:max-h-24 sm:text-sm"
                 />
                 {isLoading ? (
                   <Button

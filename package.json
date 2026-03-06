@@ -27,7 +27,7 @@
     "@streamdown/math": "^1.0.2",
     "@streamdown/mermaid": "^1.0.2",
     "@tailwindcss/vite": "^4.2.1",
-    "@tanstack/react-devtools": "^0.9.9",
+    "@tanstack/react-devtools": "^0.9.10",
     "@tanstack/react-router": "^1.166.2",
     "@tanstack/react-router-devtools": "^1.166.2",
     "@tanstack/react-router-ssr-query": "^1.166.2",
