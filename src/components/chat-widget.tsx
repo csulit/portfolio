@@ -57,7 +57,7 @@ export function ChatWidget() {
     [provider],
   )
 
-  const { messages, sendMessage, status, stop, error, reload } = useChat({
+  const { messages, sendMessage, status, stop, error, regenerate } = useChat({
     transport: chatTransport,
   })
 
@@ -239,7 +239,7 @@ export function ChatWidget() {
                       <span className="flex-1">Something went wrong.</span>
                       <button
                         type="button"
-                        onClick={() => reload()}
+                        onClick={() => regenerate()}
                         className="inline-flex items-center gap-1 font-medium underline underline-offset-2 hover:opacity-80"
                       >
                         <RotateCcw className="size-3" />
