@@ -101,10 +101,10 @@ export function ChatWidget() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={() => setIsOpen(true)}
-            className="fixed right-5 bottom-5 z-50 flex size-14 items-center justify-center rounded-full bg-accent text-background shadow-lg transition-transform hover:scale-105 active:scale-95"
+            className="fixed right-4 bottom-4 z-50 flex size-12 items-center justify-center rounded-full bg-accent text-background shadow-lg transition-transform hover:scale-105 active:scale-95 sm:right-5 sm:bottom-5 sm:size-14"
             aria-label="Open chat"
           >
-            <MessageCircle className="size-6" />
+            <MessageCircle className="size-5 sm:size-6" />
           </m.button>
         )}
       </AnimatePresence>
@@ -119,12 +119,12 @@ export function ChatWidget() {
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
             className={cn(
-              'fixed right-5 bottom-5 z-50 flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl',
-              'h-[min(550px,calc(100dvh-40px))] w-[min(400px,calc(100vw-40px))]',
+              'fixed inset-0 z-100000 flex flex-col overflow-hidden bg-surface sm:inset-auto sm:right-5 sm:bottom-5 sm:z-50 sm:rounded-2xl sm:border sm:border-border sm:shadow-2xl',
+              'h-dvh w-dvw sm:h-[min(550px,calc(100dvh-40px))] sm:w-[min(400px,calc(100vw-40px))]',
             )}
           >
             {/* Header */}
-            <div className="flex shrink-0 items-center justify-between border-b border-border px-4 py-3">
+            <div className="flex shrink-0 items-center justify-between border-b border-border px-3 py-2.5 sm:px-4 sm:py-3">
               <div className="flex items-center gap-2">
                 <div className="flex size-7 items-center justify-center rounded-full bg-accent-muted">
                   <MessageCircle className="size-3.5 text-accent" />
@@ -162,9 +162,9 @@ export function ChatWidget() {
 
             {/* Messages area */}
             <Conversation>
-              <ConversationContent className="gap-4">
+              <ConversationContent className="gap-3 sm:gap-4">
               {messages.length === 0 ? (
-                <div className="flex min-h-full flex-col items-center justify-center gap-4 px-4 text-center">
+                <div className="flex min-h-full flex-col items-center justify-center gap-3 px-3 text-center sm:gap-4 sm:px-4">
                   <div className="flex size-12 items-center justify-center rounded-full bg-accent-muted">
                     <MessageCircle className="size-6 text-accent" />
                   </div>
@@ -200,7 +200,7 @@ export function ChatWidget() {
                     >
                       <div
                         className={cn(
-                          'max-w-[85%] text-sm',
+                          'max-w-[90%] text-sm sm:max-w-[85%]',
                           message.role === 'user'
                             ? 'rounded-2xl rounded-br-md bg-surface-alt px-4 py-2.5 text-text-primary'
                             : 'text-text-primary',
@@ -252,7 +252,7 @@ export function ChatWidget() {
             </Conversation>
 
             {/* Input area */}
-            <div className="shrink-0 border-t border-border bg-surface p-3">
+            <div className="shrink-0 border-t border-border bg-surface p-2 sm:p-3">
               <form
                 onSubmit={handleSubmit}
                 className="flex items-end gap-2 rounded-xl border border-border bg-background p-2"
@@ -264,7 +264,7 @@ export function ChatWidget() {
                   onKeyDown={handleKeyDown}
                   placeholder="Ask about Gelo's services..."
                   rows={1}
-                  className="max-h-24 min-h-9 flex-1 resize-none bg-transparent px-2 py-1.5 text-sm text-text-primary outline-none placeholder:text-text-placeholder field-sizing-content"
+                  className="max-h-20 min-h-9 flex-1 resize-none bg-transparent px-2 py-1.5 text-sm text-text-primary outline-none placeholder:text-text-placeholder field-sizing-content sm:max-h-24"
                 />
                 {isLoading ? (
                   <Button
