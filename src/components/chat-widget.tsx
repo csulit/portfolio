@@ -264,7 +264,7 @@ export function ChatWidget() {
                   onKeyDown={handleKeyDown}
                   placeholder="Ask about Gelo's services..."
                   rows={1}
-                  className="max-h-20 min-h-9 flex-1 resize-none bg-transparent px-2 py-1.5 text-sm text-text-primary outline-none placeholder:text-text-placeholder field-sizing-content sm:max-h-24"
+                  className="max-h-20 min-h-9 flex-1 resize-none bg-transparent px-2 py-1.5 text-base text-text-primary outline-none placeholder:text-text-placeholder field-sizing-content sm:max-h-24 sm:text-sm"
                 />
                 {isLoading ? (
                   <Button
