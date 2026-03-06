@@ -8,8 +8,13 @@ import {
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
+import { lazy, Suspense } from 'react'
 import { LazyMotion, domAnimation } from 'framer-motion'
 import appCss from '../styles.css?url'
+
+const ChatWidget = lazy(() =>
+  import('@/components/chat-widget').then((m) => ({ default: m.ChatWidget }))
+)
 
 export const Route = createRootRoute({
   head: () => ({
@@ -181,10 +186,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <LazyMotion features={domAnimation}>
           {children}
+          <Suspense fallback={null}>
+            <ChatWidget />
+          </Suspense>
         </LazyMotion>
         <TanStackDevtools
           config={{
-            position: 'bottom-right',
+            position: "bottom-left",
           }}
           plugins={[
             {
