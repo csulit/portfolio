@@ -51,6 +51,7 @@ export function Hero() {
         className="flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row"
       >
         <Button
+          nativeButton={false}
           render={<Link to="/" hash="contact" />}
           className="h-auto w-full rounded-[10px] bg-accent px-9 py-4 text-base font-bold text-background shadow-[0_8px_32px_#5CCC8E50] transition-opacity hover:bg-accent/90 sm:w-auto"
         >
