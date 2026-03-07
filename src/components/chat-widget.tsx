@@ -165,7 +165,7 @@ export function ChatWidget() {
             </div>
 
             {/* Messages area */}
-            <Conversation>
+            <Conversation className="chat-scrollbar">
               <ConversationContent className="gap-3 sm:gap-4">
               {messages.length === 0 ? (
                 <div className="flex min-h-full flex-col items-center justify-center gap-3 px-3 text-center sm:gap-4 sm:px-4">
