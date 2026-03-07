@@ -119,6 +119,28 @@ h6 {
   font-family: var(--font-sans);
 }
 
+.chat-scrollbar ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-scrollbar ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scrollbar ::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+
+.chat-scrollbar ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+.chat-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
