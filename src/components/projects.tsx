@@ -1,69 +1,19 @@
-import { FileCode, Layout, Smartphone } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { m } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { fadeUp, useAnimateOnce } from '@/lib/motion'
+import { projects } from '@/lib/project-data'
 
-interface Tag {
-  label: string
-  color: string
-  bg: string
+/** Map project iconColor to the primary tag background class */
+const PRIMARY_TAG_BG: Record<string, string> = {
+  'text-accent': 'bg-accent-soft',
+  'text-sky': 'bg-sky-soft',
+  'text-indigo': 'bg-indigo-soft',
+  'text-amber': 'bg-amber-soft',
 }
 
-interface Project {
-  title: string
-  description: string
-  tags: Array<Tag>
-  icon: LucideIcon
-  gradient: string
-  iconColor: string
-  highlighted?: boolean
-}
-
-const projects: Array<Project> = [
-  {
-    title: 'AI Document Processing Pipeline',
-    description:
-      'Built an AI-powered document processing system using GPT-4o agents with automated extraction, classification, and structured output. Handles high-throughput workloads with queue-based orchestration.',
-    tags: [
-      { label: 'AI / LLM', color: 'text-accent', bg: 'bg-accent-soft' },
-      { label: 'OpenAI', color: 'text-text-secondary', bg: 'bg-surface' },
-      { label: 'BullMQ', color: 'text-text-secondary', bg: 'bg-surface' },
-      { label: 'PostgreSQL', color: 'text-text-secondary', bg: 'bg-surface' },
-    ],
-    icon: FileCode,
-    gradient: 'from-accent/20 to-accent/5',
-    iconColor: 'text-accent',
-    highlighted: true,
-  },
-  {
-    title: 'Full-Stack SaaS Platform',
-    description:
-      'Production SaaS application with auth, dashboards, and background job processing. Built end-to-end with a modern React framework, TypeScript, and a robust data layer.',
-    tags: [
-      { label: 'SaaS', color: 'text-accent', bg: 'bg-accent-soft' },
-      { label: 'React', color: 'text-text-secondary', bg: 'bg-surface' },
-      { label: 'TypeScript', color: 'text-text-secondary', bg: 'bg-surface' },
-      { label: 'Prisma', color: 'text-text-secondary', bg: 'bg-surface' },
-    ],
-    icon: Layout,
-    gradient: 'from-indigo/20 to-indigo/5',
-    iconColor: 'text-indigo',
-  },
-  {
-    title: 'React Native Mobile App',
-    description:
-      'Cross-platform mobile application with smooth animations, offline support, and a polished UX — built with React Native and TypeScript.',
-    tags: [
-      { label: 'Mobile', color: 'text-indigo', bg: 'bg-indigo-soft' },
-      { label: 'React Native', color: 'text-text-secondary', bg: 'bg-surface' },
-      { label: 'TypeScript', color: 'text-text-secondary', bg: 'bg-surface' },
-    ],
-    icon: Smartphone,
-    gradient: 'from-amber/20 to-amber/5',
-    iconColor: 'text-amber',
-  },
-]
+/** Home page shows the first 3 projects */
+const featuredProjects = projects.slice(0, 3)
 
 export function Projects() {
   const { inViewProps, variants, container } = useAnimateOnce('projects-home', 0.2)
@@ -95,7 +45,7 @@ export function Projects() {
         {...inViewProps}
         className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3"
       >
-        {projects.map((project) => (
+        {featuredProjects.map((project) => (
           <m.div
             key={project.title}
             variants={variants(fadeUp)}
@@ -106,9 +56,20 @@ export function Projects() {
                 : 'border border-border',
             )}
           >
-            <div className={cn('flex h-50 flex-col items-center justify-center gap-3 bg-gradient-to-br', project.gradient)}>
+            <div className={cn('flex h-50 flex-col items-center justify-center gap-3 bg-linear-to-br', project.gradient)}>
               <project.icon className={cn('size-10 opacity-60', project.iconColor)} />
-              <span className="text-xs font-medium tracking-wide text-text-muted">Coming Soon</span>
+              {project.url ? (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn('flex items-center gap-1.5 text-xs font-medium tracking-wide transition-opacity hover:opacity-80', project.iconColor)}
+                >
+                  View Live <ExternalLink className="size-3" />
+                </a>
+              ) : (
+                <span className="text-xs font-medium tracking-wide text-text-muted">Coming Soon</span>
+              )}
             </div>
 
             <div className="flex flex-1 flex-col gap-4 p-6">
@@ -118,8 +79,9 @@ export function Projects() {
                     key={tag.label}
                     className={cn(
                       'rounded-md border border-border px-2.5 py-1 text-[11px] font-semibold',
-                      tag.color,
-                      tag.bg,
+                      tag.primary
+                        ? cn(project.iconColor, PRIMARY_TAG_BG[project.iconColor])
+                        : 'text-text-secondary bg-surface',
                     )}
                   >
                     {tag.label}

@@ -1,82 +1,14 @@
 import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
-import { FileCode, Layout, Smartphone } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { m, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { fadeUp, useAnimateOnce } from '@/lib/motion'
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
+import { projects, CATEGORIES } from '@/lib/project-data'
 
 export const Route = createFileRoute('/projects')({ component: ProjectsPage })
-
-interface Tag {
-  label: string
-  category?: boolean
-}
-
-interface Project {
-  title: string
-  description: string
-  tags: Array<Tag>
-  category: string
-  icon: LucideIcon
-  gradient: string
-  iconColor: string
-  highlighted?: boolean
-}
-
-const categories = ['All', 'SaaS', 'Mobile', 'AI / ML'] as const
-
-const projects: Array<Project> = [
-  {
-    title: 'AI Document Processing Pipeline',
-    description:
-      'Built an AI-powered document processing system using GPT-4o/4o-mini agents with automated extraction, classification, and structured output. Handles high-throughput workloads with BullMQ queues and Prisma/PostgreSQL.',
-    tags: [
-      { label: 'AI / ML', category: true },
-      { label: 'OpenAI' },
-      { label: 'BullMQ' },
-      { label: 'Prisma' },
-      { label: 'PostgreSQL' },
-    ],
-    category: 'AI / ML',
-    icon: FileCode,
-    gradient: 'from-accent/20 to-accent/5',
-    iconColor: 'text-accent',
-    highlighted: true,
-  },
-  {
-    title: 'Full-Stack SaaS Platform',
-    description:
-      'Production SaaS application built with TanStack Start (React), TypeScript, PostgreSQL, and Prisma. Includes authentication, dashboards, and background job processing via BullMQ/Redis.',
-    tags: [
-      { label: 'SaaS', category: true },
-      { label: 'React' },
-      { label: 'TypeScript' },
-      { label: 'Prisma' },
-      { label: 'BullMQ' },
-    ],
-    category: 'SaaS',
-    icon: Layout,
-    gradient: 'from-indigo/20 to-indigo/5',
-    iconColor: 'text-indigo',
-  },
-  {
-    title: 'React Native Mobile App',
-    description:
-      'Cross-platform mobile application with smooth animations, offline support, and a polished UX — built with React Native and TypeScript.',
-    tags: [
-      { label: 'Mobile', category: true },
-      { label: 'React Native' },
-      { label: 'TypeScript' },
-    ],
-    category: 'Mobile',
-    icon: Smartphone,
-    gradient: 'from-amber/20 to-amber/5',
-    iconColor: 'text-amber',
-  },
-]
 
 function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState<string>('All')
@@ -124,7 +56,7 @@ function ProjectsPage() {
           {...mountProps}
           className="flex flex-wrap items-center gap-3 px-6 pb-12 lg:px-20"
         >
-          {categories.map((cat) => (
+          {CATEGORIES.map((cat) => (
             <m.button
               key={cat}
               variants={variants(fadeUp)}
@@ -160,9 +92,20 @@ function ProjectsPage() {
                     : 'border border-border',
                 )}
               >
-                <div className={cn('flex h-55 flex-col items-center justify-center gap-3 bg-gradient-to-br', project.gradient)}>
+                <div className={cn('flex h-55 flex-col items-center justify-center gap-3 bg-linear-to-br', project.gradient)}>
                   <project.icon className={cn('size-10 opacity-60', project.iconColor)} />
-                  <span className="text-xs font-medium tracking-wide text-text-muted">Coming Soon</span>
+                  {project.url ? (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn('flex items-center gap-1.5 text-xs font-medium tracking-wide transition-opacity hover:opacity-80', project.iconColor)}
+                    >
+                      View Live <ExternalLink className="size-3" />
+                    </a>
+                  ) : (
+                    <span className="text-xs font-medium tracking-wide text-text-muted">Coming Soon</span>
+                  )}
                 </div>
 
                 <div className="flex flex-1 flex-col gap-3.5 p-6">
@@ -172,7 +115,7 @@ function ProjectsPage() {
                         key={tag.label}
                         className={cn(
                           'rounded-md px-2.5 py-1 text-[11px] font-semibold',
-                          tag.category
+                          tag.primary
                             ? 'bg-accent-dark text-accent'
                             : 'border border-border bg-surface text-text-secondary',
                         )}
