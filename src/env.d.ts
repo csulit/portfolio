@@ -4,6 +4,7 @@ declare module 'cloudflare:workers' {
     TURNSTILE_SECRET_KEY: string
     GLM_API_KEY: string
     OPENAI_API_KEY: string
+    CF_AIG_TOKEN: string
   }
   const env: Env
 }
