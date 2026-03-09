@@ -36,7 +36,6 @@ export const Route = createFileRoute("/api/chat")({
         const {
           createOpenAIProvider,
           createGLMProvider,
-          isRegionRestrictionError,
           DEFAULT_PROVIDER,
         } = await import("@/lib/ai-providers");
         const {
@@ -48,71 +47,16 @@ export const Route = createFileRoute("/api/chat")({
         const model =
           provider === "glm"
             ? createGLMProvider(env.GLM_API_KEY)
-            : createOpenAIProvider(env.OPENAI_API_KEY);
+            : createOpenAIProvider(env.OPENAI_API_KEY, env.CF_AIG_TOKEN);
 
         const modelMessages = await convertToModelMessages(messages);
-        const streamOpts = {
+
+        return streamText({
+          model,
           system: SYSTEM_PROMPT,
           messages: modelMessages,
           abortSignal: request.signal,
-        } as const;
-        const responseOpts = { originalMessages: messages };
-
-        const primaryResponse = streamText({
-          model,
-          ...streamOpts,
-        }).toUIMessageStreamResponse(responseOpts);
-
-        // No fallback needed when already using GLM
-        if (provider === "glm") {
-          return primaryResponse;
-        }
-
-        // Wrap the OpenAI stream to fall back to GLM on region errors
-        const primaryBody = primaryResponse.body!;
-
-        async function pipeStream(
-          reader: ReadableStreamDefaultReader<Uint8Array>,
-          controller: ReadableStreamDefaultController<Uint8Array>,
-        ) {
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) {
-              controller.close();
-              return;
-            }
-            controller.enqueue(value);
-          }
-        }
-
-        const wrappedStream = new ReadableStream({
-          async start(controller) {
-            const reader = primaryBody.getReader();
-            try {
-              await pipeStream(reader, controller);
-            } catch (error) {
-              await reader.cancel();
-              if (!isRegionRestrictionError(error)) {
-                controller.error(error);
-                return;
-              }
-              const fallbackBody = streamText({
-                model: createGLMProvider(env.GLM_API_KEY),
-                ...streamOpts,
-              }).toUIMessageStreamResponse(responseOpts).body!;
-              const fallbackReader = fallbackBody.getReader();
-              try {
-                await pipeStream(fallbackReader, controller);
-              } catch (fallbackError) {
-                controller.error(fallbackError);
-              }
-            }
-          },
-        });
-
-        return new Response(wrappedStream, {
-          headers: primaryResponse.headers,
-        });
+        }).toUIMessageStreamResponse({ originalMessages: messages });
       },
     },
   },
