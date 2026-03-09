@@ -33,11 +33,8 @@ export const Route = createFileRoute("/api/chat")({
     handlers: {
       POST: async ({ request }) => {
         const { env } = await import("cloudflare:workers");
-        const {
-          createOpenAIProvider,
-          createGLMProvider,
-          DEFAULT_PROVIDER,
-        } = await import("@/lib/ai-providers");
+        const { createOpenAIProvider, createGLMProvider, DEFAULT_PROVIDER } =
+          await import("@/lib/ai-providers");
         const {
           messages,
           provider = DEFAULT_PROVIDER,
